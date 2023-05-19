@@ -1,0 +1,15 @@
+
+  <div class="search-container">
+  
+      <div class="form-size-1">
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search by {{selectedFilter}}" (keyup)="filterEmployees()">
+      </div>
+ 
+    <div class="form-size-2">
+      <select class="form-select" name="filterSelect" [(ngModel)]="selectedFilter" (change)="setSearchFilter($event)">
+        <option value="empcode">empcode</option>
+        <option value="department">department</option>
+        <option value="empname">empname</option>
+      </select>
+    </div>
+  </div>

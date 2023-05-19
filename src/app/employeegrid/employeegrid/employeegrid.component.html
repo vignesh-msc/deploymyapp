@@ -1,0 +1,50 @@
+<div class="container-fluid container-list">
+  <h3>page is  Used for training freshers...</h3> 
+<input type="text" [disabled]="isDisabled"/>
+   <ul>
+    
+        <li *ngFor="let user of users">
+      <div> 
+        {{ user.name}}
+       <label style="border: solid;"> {{ user.age}}</label>
+        {{ user.email}}
+        {{ user.age}}
+      </div>
+      <!-- <input type="checkbox"  (change)="onCheckboxChange($event,user)"> -->
+      <input type="button" value="edit" [disabled]="user.age<20"/>
+    </li>
+    
+      </ul>
+      <button (click)="disable()">Disabletextbox</button>
+    <button (click)="enable()">Enabletextbox</button>
+    <div class="headingdiv">
+      <ul>
+            <li *ngFor="let selecteduser of users"  [ngStyle] ="{'background-color':selecteduser.age < 20 ? 'blue' : 'pink'}">{{ selecteduser.age }}
+          {{selecteduser.name}}
+        </li>
+        </ul>
+    </div>
+    <div>
+      <ul>
+            <li *ngFor="let selecteduser of users"  [ngClass]="selecteduser.age < 20 ? 'clsgreen' : 'clsyellow'">{{ selecteduser.age }}
+          {{selecteduser.name}}
+        </li>
+        </ul>
+    </div>
+    
+
+      Input string : <input type='text' [(ngModel)]="num" />
+ 
+    <div [ngSwitch]="num">
+      <div *ngSwitchCase="0">Zero is Selected</div>
+      <div *ngSwitchCase="1">One is Selected</div>
+      <div *ngSwitchCase="2">Two is Selected</div>
+      <div *ngSwitchDefault>This is Default 2</div>
+    </div>
+    <div>
+      <button [ngStyle]="AddButtonCSSStyles()">Click Me </button>
+    </div>
+        </div>
+
+   
+    

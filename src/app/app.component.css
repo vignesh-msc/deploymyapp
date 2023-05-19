@@ -1,0 +1,154 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.header {
+  width: 100%;
+ 
+  color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+  font-size: 24px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.header-wrapper {
+  /* margin: 20px 0;
+    padding: 20px; */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  /* max-height: 100vh; */
+  height: 100vh;
+}
+.container-layout{
+  height: 100%;
+}
+.row-section{
+   height: 100%;
+}
+/* Menu bar styles */
+.main-bar {
+  color: white;
+  font-size: 25px;
+  background-color: #f0f0f0;
+}
+.section{
+  height: 100vh;
+}
+.header-link{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  list-style-type: none;
+  font-size:  15px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.header-link a{
+text-decoration: none;
+}
+.header-strip {
+  width: 100%;
+  background-color: #f0f0f0;
+  padding: 10px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+.menu-bar ul li {
+  display: inline-block;
+  margin-right: 20px;
+  /* margin: 0 auto; */
+}
+
+.menu-bar ul li a {
+  text-decoration: none;
+}
+
+/* Sidebar styles */
+.sidebar {
+  background-color: #4e73df;
+  /* width: 30%; */
+  /* height: 100vh; */
+  /* min-height: 1000px; */
+  padding: 10px;
+  /* border: solid 5px; */
+}
+.links ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+}
+
+.links ul li {
+  /* border: rgb(237, 18, 18) solid 2px; */
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+  padding-top: 10px;
+
+}
+
+.links a {
+  /* border: rgb(226, 17, 17) solid 3px;  */
+  text-decoration: none;
+  color: rgba(255, 255, 255, .8)
+}
+
+.links a:hover {
+  color: white;
+}
+
+.menu-bar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  display: block;
+  font-size: 15px;
+  color: white;
+}
+
+.menu-link i {
+  margin-right: 10px;
+}
+.menu-link.active {
+  background-color: red;
+  color: white;
+} 
+
+.sidebar-header {
+  display: flex;
+  border-bottom: 2px solid white;
+  color: white;
+  gap: 5px;
+}
+
+.sidebar-header span {
+  font-size: 20px;
+
+}
+
+header {
+  background-color:#38acec;
+  /* color: #e31c1c; */
+  padding: 30px;
+  margin: 0;
+  width: 100%;
+  height: 50px;
+  padding-top:10px
+}
+.row-alignment{
+height: 100vh;
+}

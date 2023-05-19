@@ -1,0 +1,52 @@
+.form-group {
+    display: flex;
+    align-items: center;
+}
+
+.label-group {
+    flex-basis: 15%;
+    margin-right: 1rem;
+    flex-shrink: 1;
+}
+
+.form-group .form-control {
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: 60%;
+}
+
+.btn-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    margin-right: 50px;
+   
+}
+.btn-register button{
+    height: 25px;
+}
+
+
+
+.register-div {
+    font-size: 10px;
+    color: black;
+    border-radius: 10px;
+    margin-top: 15%;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    /* border: solid; */
+
+}
+
+.heading {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    /* border: solid; */
+    padding-bottom: 5px;
+}

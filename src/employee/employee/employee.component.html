@@ -1,0 +1,69 @@
+
+ <div class="container-fluid container-list">
+  <app-loader [show]="isLoading"></app-loader>
+  <app-employee-search [employee]="employeemasterlist"(employeesearchresults)="employeesearch_results($event)"></app-employee-search>
+        <h1>Employees</h1>
+        <div class="container-table table-responsive">
+        
+          <table class="table tblgrid table-striped table-bordered"> 
+            <thead class="header-table">
+              <tr>
+                <th class="cellwidth-one">EMPCODE<i class="fa fa-sort" (click)="sort('empcode')"></i></th>
+                <th class="cellwidth-two">EMPLOYEE NAME<i class="fa fa-sort" (click)="sort('empname')"></i></th>
+                <th class="cellwidth-one">Department<i class="fa fa-sort" (click)="sort('department')"></i></th>
+                <th class="cellwidth-data">
+                  <div class="btn-align">
+                    <button type="button" class="btn btn-primary" (click)="openModal('add',null)">
+                      <span class="glyphicon glyphicon-plus"></span>
+                    </button>  
+                  </div>
+                  </th>
+              </tr>
+             
+            </thead>
+            <tbody>
+             
+              <tr *ngFor="let d of employeeslist">
+                  <td>{{d.empcode}}</td>
+                  <td>{{d.empname}}</td>
+                  <td>{{d.department}}</td>
+                <td class="cellwidth-data12">
+                    <a class="pointer" title="Edit" data-toggle="tooltip"(click)="openModal('edit',d)"><i class="material-icons"
+                      >&#xE254;</i></a>
+                    <a class="pointer" title="Delete" data-toggle="tooltip"><i
+                      class="material-icons" (click)="delete(d)">&#xE872;</i></a>
+                        </td>
+              </tr>
+             
+            </tbody> 
+          </table> 
+        </div>
+            <div class="norecords"><span *ngIf="isempty" style="text-align: center; font-weight: bold;" >No records found</span>
+                </div>
+      </div>
+      <div>  
+     </div>
+     <div> 
+     
+      </div>
+        <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <!-- <h5 class="modal-title">Add Employee</h5> -->
+                <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div *ngIf="isaddemp">
+                  <app-addemployee #addComponent  (employeeAdded)="onEmployeeAdded($event)" (empaddmodelclose)="onCancel()"></app-addemployee>
+                </div>
+                <div *ngIf="iseditemp">
+                  <app-editemployee  #editComponent  [employee]="editemployee" (empeditmodelclose)="employeeditbtnclose(false)"></app-editemployee>
+                </div> 
+              </div>      
+        </div>
+        </div>
+       
+        </div>

@@ -1,0 +1,39 @@
+.search-container {
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    color: black;
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:10px;
+  }
+  .form-size-2{
+    width: 30%;
+   
+  }
+  .form-size-1{
+    width: 30%;
+  }
+  .search-container .form-control {
+    width: 100%;
+    height: 30px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  
+  .search-container .form-select {
+    width: 100%;
+    height: 30px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 13px;
+  }
+  input::placeholder {
+    font-size: 13px;
+  }
+  

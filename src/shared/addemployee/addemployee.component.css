@@ -1,0 +1,85 @@
+.duplicatemessage {
+  font-size: 10px;
+  font-weight: bold;
+  color: red;
+}
+
+
+.parent {
+  background-color: whitesmoke;
+  padding: 0;
+  border-radius: 3px;
+  font-size: 10px;
+  color: black;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .add-parent{
+    display: flex;
+    gap :10px;
+    justify-content: center;
+    align-items: center;
+} */
+.add-parent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.add-parent div:first-child {
+  margin-right: 10px;
+}
+
+.align-controls input label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.label-control {
+  margin-right: 1rem;
+  flex-shrink: 1;
+  color: black;
+  font-size: 10px;
+
+}
+
+.add-content {
+  display: flex;
+  border: rgb(222, 24, 24) solid 5px;
+  justify-content: center;
+}
+
+.add-parent div:last-child {
+  width: 100%;
+}
+
+.add-parent label {
+  width: 150px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.emp-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label-control {
+  margin-right: 10px;
+  width: 65px;
+}
+
+.empsubmit {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.emp-control input {
+  width: 150px;
+}

@@ -1,0 +1,123 @@
+.payroll-parent {
+  height: 200px;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.col {
+  background-color: white;
+  height: 50px;
+  border: aquamarine solid 1px;
+  width: 200px;
+
+}
+
+.payroll-subparent {
+  background-color: blueviolet;
+  height: 200px;
+}
+
+#menu1 {
+  width: 100px;
+  background-color: #f0f0f0;
+  padding: 20px;
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+}
+
+.main-div {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.alert-header {
+  height: 100vh;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+
+}
+
+.payroll-div {
+  height: 40%;
+  text-align: center;
+  border: aquamarine solid 1px;
+}
+
+.alert-title {
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+}
+
+.alert-group-config span {
+  font-weight: bold;
+}
+
+.alert-group-config select {
+  width: 30%;
+  height: 15%;
+
+}
+
+.alert-group-config {
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1%;
+}
+
+.alert-body {
+  border: rgb(87, 7, 234) solid 1px;
+  height: 30%;
+}
+
+.advsortdrpdown {
+  width: 50%;
+  height: 15%;
+}
+
+.alert-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.payroll-icon-del {
+  border: rgb(219, 24, 24) solid 1px;
+}
+
+#menu {
+  background-color: #f2f2f2;
+  width: 15%;
+}
+
+#content {
+  width: 85%;
+}
+
+/* Style for content div */
+
+.inner-div {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.alert-parent-div {
+  border: rgb(238, 6, 6) solid 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
