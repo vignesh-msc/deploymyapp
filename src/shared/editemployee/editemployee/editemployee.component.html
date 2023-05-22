@@ -1,5 +1,5 @@
 
-
+<!-- 
       <div class="parent">
         <div class="code-control">
           <label for="name">empCode:</label>
@@ -17,6 +17,24 @@
           <input type="button" (click)="editable(selectedEmployee,'api')" value="Edit" class="btn btn-primary mt-3">
           <input type="button" class="btn btn-secondary mt-3" (click)="onCloseHandled()" value="Cancel">
         </div>  
+      </div> -->
+
+
+      <div class="input-group input-group-lg mb-3">
+        <span class="input-group-text" id="basic-addon1">empcode:</span>
+        <input type="text" [(ngModel)]="selectedEmployee.empcode" name="code" id="code" required class="form-control" readonly>
+      </div>
+      <div class="input-group input-group-lg mb-3">
+        <span class="input-group-text" id="basic-addon1">empname:</span>
+        <input type="text" [(ngModel)]="selectedEmployee.empname" name="age" id="empname" required class="form-control">
+      </div>
+      <div class="input-group input-group-lg mb-3">
+        <span class="input-group-text" id="basic-addon1">department:</span>
+        <input type="text" [(ngModel)]="selectedEmployee.department" name="department" id="department" required class="form-control">
+      </div>
+      <div class="btn-emp">
+        <input type="button" (click)="editable(selectedEmployee,'api')" value="Edit" class="btn btn-primary mt-3">
+        <input type="button" class="btn btn-secondary mt-3" (click)="onCloseHandled()" value="Cancel">
       </div>
 
 
