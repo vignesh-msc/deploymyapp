@@ -76,7 +76,7 @@
 
 .empsubmit {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 5px;
 }
 

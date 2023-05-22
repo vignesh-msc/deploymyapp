@@ -1,6 +1,7 @@
 .btn-emp{
     display: flex;
-    column-gap:5px
+    column-gap:5px;
+    justify-content: flex-end;
 }
 .parent {
     background-color: whitesmoke;
