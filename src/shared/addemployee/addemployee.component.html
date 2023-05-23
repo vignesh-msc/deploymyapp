@@ -29,23 +29,29 @@
   <input type="button" (click)="addEmployee(employee)" value="Add" class="btn btn-primary mt-3">
     <input type="button" class="btn btn-secondary mt-3" (click)="onaddCloseHandled()" value="Cancel">
  </div> -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="input-group input-group-lg mb-3">
+        <span class="input-group-text" id="basic-addon1">empcode:</span>
+        <input type="text" [(ngModel)]="employee.empcode" name="code" id="code" required class="form-control input-sm" placeholder="empcode">
+      </div>
+      <div class="input-group input-group-lg mb-3">
+        <span class="input-group-text" id="basic-addon1">empname:</span>
+        <input type="text" [(ngModel)]="employee.empname" name="age" id="empname" required class="form-control" placeholder="Enter empname">
+      </div>
+      <div class="input-group input-group-lg mb-3">
+        <span class="input-group-text" id="basic-addon1">department:</span>
+        <input type="text" [(ngModel)]="employee.department" name="department" id="department" required class="form-control" placeholder="Enter department">
+      </div>
+      <div class="empsubmit">
+        <input type="button" (click)="addEmployee(employee)" value="Add" class="btn btn-primary mt-3">
+          <input type="button" class="btn btn-secondary mt-3" (click)="onaddCloseHandled()" value="Cancel">
+       </div>
+    </div>
+  </div>
+</div>
 
- <div class="input-group input-group-lg mb-3">
-  <span class="input-group-text" id="basic-addon1">empcode:</span>
-  <input type="text" [(ngModel)]="employee.empcode" name="code" id="code" required class="form-control" placeholder="empcode">
-</div>
-<div class="input-group input-group-lg mb-3">
-  <span class="input-group-text" id="basic-addon1">empname:</span>
-  <input type="text" [(ngModel)]="employee.empname" name="age" id="empname" required class="form-control" placeholder="Enter empname">
-</div>
-<div class="input-group input-group-lg mb-3">
-  <span class="input-group-text" id="basic-addon1">department:</span>
-  <input type="text" [(ngModel)]="employee.department" name="department" id="department" required class="form-control" placeholder="Enter department">
-</div>
-<div class="empsubmit">
-  <input type="button" (click)="addEmployee(employee)" value="Add" class="btn btn-primary mt-3">
-    <input type="button" class="btn btn-secondary mt-3" (click)="onaddCloseHandled()" value="Cancel">
- </div>
 
 
 
