@@ -17,7 +17,8 @@ export class LoginComponent {
   constructor(private authService: authservice, private formBuilder: FormBuilder, router: Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
+      rememberMe: [false]
     });
     this.router = router;
   }
@@ -25,19 +26,22 @@ export class LoginComponent {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      rememberMe: [false]
     });
     this.authService.sendloggedinMessage(false);
   }
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
+    debugger;
     this.submitted = true;
     debugger;
     if (this.loginForm.invalid) {
       return;
     }
-    this.authService.login(this.loginForm.get('email')!.value, this.loginForm.get('password')!.value)
+
+      this.authService.login(this.loginForm.get('email')!.value, this.loginForm.get('password')!.value)
       .subscribe(
         data => {
           localStorage.setItem('token', data.token);
@@ -48,6 +52,8 @@ export class LoginComponent {
         error => {
           this.errorMessage = error.error.message;
         });
+
+   
   }
 
 
