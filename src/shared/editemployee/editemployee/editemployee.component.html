@@ -19,7 +19,9 @@
         </div>  
       </div> -->
 
-
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
       <div class="input-group input-group-lg mb-3">
         <span class="input-group-text" id="basic-addon1">empcode:</span>
         <input type="text" [(ngModel)]="selectedEmployee.empcode" name="code" id="code" required class="form-control" readonly>
@@ -36,6 +38,13 @@
         <input type="button" (click)="editable(selectedEmployee,'api')" value="Edit" class="btn btn-primary mt-3">
         <input type="button" class="btn btn-secondary mt-3" (click)="onCloseHandled()" value="Cancel">
       </div>
+
+    </div>
+   
+
+  </div>
+</div>
+    
 
 
 

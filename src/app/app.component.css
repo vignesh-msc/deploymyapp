@@ -123,10 +123,7 @@ text-decoration: none;
 .menu-link i {
   margin-right: 10px;
 }
-.menu-link.active {
-  background-color: red;
-  color: white;
-} 
+
 
 .sidebar-header {
   display: flex;
@@ -138,6 +135,10 @@ text-decoration: none;
 .sidebar-header span {
   font-size: 20px;
 
+}
+
+.links a.active {
+  color: white; /* Replace with your desired active text color */
 }
 
 header {

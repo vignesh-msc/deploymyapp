@@ -72,3 +72,10 @@
 .heading {
   padding-bottom: 5px;
 }
+.form-check-input{
+  margin-left: 10px;
+}
+.custom-margin {
+  margin-top: -3px;
+  gap: 5px;
+}

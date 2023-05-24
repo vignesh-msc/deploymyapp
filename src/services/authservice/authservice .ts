@@ -12,6 +12,7 @@ import { register } from "src/app/Models/register";
   export class authservice {
     constructor(private http: HttpClient) { }
     private _userRole: string ='';
+    private email = localStorage.getItem('email');
     private subject = new Subject<any>();
   
     public get userRole(): string {
@@ -27,7 +28,7 @@ import { register } from "src/app/Models/register";
       return this.http.post<any>(`${environment.apiUrl}/login`, { email, password });
   
       // Store token and user role
-     // localStorage.setItem('token', token);
+    // localStorage.setItem('token', token);
     //  this._userRole = user.role;
   
 
@@ -45,16 +46,15 @@ import { register } from "src/app/Models/register";
     }
   
     public logout(): void {
-      // Remove token and user role
-      localStorage.removeItem('token');
+        localStorage.removeItem('token');
      // this._userRole = null;
      this.subject.next( false );
     }
   
     public isLoggedIn(): boolean {
       // Check if user is authenticated by checking for token
-      this.subject.next({ isLoggedIn: !!localStorage.getItem('token') });
-      return !!localStorage.getItem('token');
+      this.subject.next({ isLoggedIn: (!!localStorage.getItem('token')) });
+      return !!(localStorage.getItem('token'));
     }
 
     getLoggedinMessage(): Observable<boolean> {
