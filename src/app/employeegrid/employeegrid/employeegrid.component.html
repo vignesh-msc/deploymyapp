@@ -1,50 +1,72 @@
 <div class="container-fluid container-list">
-  <h3>page is  Used for training freshers...</h3> 
-<input type="text" [disabled]="isDisabled"/>
-   <ul>
-    
-        <li *ngFor="let user of users">
-      <div> 
-        {{ user.name}}
-       <label style="border: solid;"> {{ user.age}}</label>
-        {{ user.email}}
-        {{ user.age}}
+  <div class="border-bottom text-dark">
+  <p class="text-dark font-weight-bold small pt-4">Create Customer</p>  
+  </div>
+  <span class="border-bottom-5"></span>
+  <div class="container pt-4">
+    <div class="row">
+      <div class="col-md-4">
+        <label class="form-label fs-6 fw-normal">Customer Name</label>
+        <input type="text" class="form-control form-control-lg" placeholder="customer name">
       </div>
-      <!-- <input type="checkbox"  (change)="onCheckboxChange($event,user)"> -->
-      <input type="button" value="edit" [disabled]="user.age<20"/>
-    </li>
-    
-      </ul>
-      <button (click)="disable()">Disabletextbox</button>
-    <button (click)="enable()">Enabletextbox</button>
-    <div class="headingdiv">
-      <ul>
-            <li *ngFor="let selecteduser of users"  [ngStyle] ="{'background-color':selecteduser.age < 20 ? 'blue' : 'pink'}">{{ selecteduser.age }}
-          {{selecteduser.name}}
-        </li>
-        </ul>
+      <div class="col-md-4">
+        <label class="form-label fs-6 fw-normal">Username</label>
+        <input type="text" class="form-control form-control-lg">
+      </div>
+      <div class="col-md-4"></div>
     </div>
-    <div>
-      <ul>
-            <li *ngFor="let selecteduser of users"  [ngClass]="selecteduser.age < 20 ? 'clsgreen' : 'clsyellow'">{{ selecteduser.age }}
-          {{selecteduser.name}}
-        </li>
-        </ul>
-    </div>
-    
+    <div class="row pt-5">
+      <div class="col-md-4">
+        <label class="form-label fs-6 fw-normal">User Type</label>
+        <input type="text" class="form-control form-control-lg">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-6 fw-normal">Mapped Group</label>
+        <input type="text" class="form-control form-control-lg">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-6 fw-normal">User Role</label>
+        <input type="text" class="form-control form-control-lg">
+      </div>
 
-      Input string : <input type='text' [(ngModel)]="num" />
- 
-    <div [ngSwitch]="num">
-      <div *ngSwitchCase="0">Zero is Selected</div>
-      <div *ngSwitchCase="1">One is Selected</div>
-      <div *ngSwitchCase="2">Two is Selected</div>
-      <div *ngSwitchDefault>This is Default 2</div>
     </div>
-    <div>
-      <button [ngStyle]="AddButtonCSSStyles()">Click Me </button>
+    <div class="row pt-5">
+      <div class="col-md-4">
+        <label class="form-label fs-6">First Name</label>
+        <input type="text" class="form-control form-control-lg mt-2" placeholder="first name">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-6 ">Middle Name</label>
+        <input type="text" class="form-control form-control-lg mt-2" placeholder="middle name">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-6 fw-normal">Last Name</label>
+        <input type="text" class="form-control form-control-lg mt-2" placeholder="last name">
+      </div>
+
     </div>
-        </div>
+    <div class="row pt-5">
+      <div class="col-md-4">
+        <label class="form-label fs-6 fw-normal">Email</label>
+        <input type="text" class="form-control form-control-lg mt-2" placeholder="Email">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-6 fw-normal">Mobile Number</label>
+        <input type="text" class="form-control form-control-lg mt-2" placeholder="mobile number">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-6 fw-normal">Password</label>
+        <input type="text" class="form-control form-control-lg mt-2" placeholder="password">
+      </div>
+    </div>
+    <div class="row pt-5">
+      <div class="col-md-6">
+        <input type="submit" class="btn btn-warning btn-lg" value="Submit">
+      </div>
+      <div class="col-md-6"></div>
+    </div>
+  </div>
+</div>
 
    
     

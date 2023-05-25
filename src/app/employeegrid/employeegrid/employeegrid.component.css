@@ -4,10 +4,24 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     background-color: #fff;
     color:black;
-    min-height: 200px;
     overflow: auto;
-    border: solid;
+    height: 100%;
+    font-size:15px;
+    font-weight: normal!important;
 }
+.container-list label{
+    font-weight: normal!important;
+}
+.container-list input[type="text"] {
+    height:50px;
+    border-radius: 5px;
+
+}
+.form-control::placeholder {
+    color: grey;
+    font-size: 15px;
+  }
+  
 h3{
     padding: 10px;
 }
