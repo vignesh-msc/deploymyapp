@@ -5,7 +5,7 @@
     background-color: #fff;
     color:black;
     overflow: auto;
-    height: 100%;
+    height: 100vh;
     font-size:15px;
     font-weight: normal!important;
 }
@@ -21,6 +21,17 @@
     color: grey;
     font-size: 15px;
   }
+  .submit-me{
+    font-size: 15px;
+    border-radius: 7px;
+
+  }
+.customer1{
+   font-size: 15px;
+}
+.customer{
+    font-size: 25px; 
+}
   
 h3{
     padding: 10px;
