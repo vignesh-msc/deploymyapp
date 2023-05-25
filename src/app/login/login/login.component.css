@@ -79,3 +79,31 @@
   margin-top: -3px;
   gap: 5px;
 }
+.login-form{
+  color:black;
+}
+.login-form input[type="text"] {
+  height:40px;
+
+}
+.login-form input[type="password"] {
+  height:40px;
+
+}
+.login-form label{
+font-size: 15px;
+}
+.btn-signup{
+  width: 75%;
+  height:40px;
+  border: black solid 1px;
+  background-color: white;
+  font-size: 15px;
+
+}
+.forget-pwd{
+  font-size: 10px;
+}
+.sign_up{
+  font-size: 15px;
+}
