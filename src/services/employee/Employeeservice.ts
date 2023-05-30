@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { employee } from '../../app/Models/employee';
+import { departments, employee } from '../../app/Models/employee';
 
 @Injectable({
   providedIn: 'root' // corrected value
@@ -15,6 +15,13 @@ export class EmployeeService {
 
   get employeeList$(): Observable<employee[]> {
     return this.employeeListSubject.asObservable();
+  }
+
+  //http://localhost:3000/departments
+  getDepartments(): Observable<departments[]> {
+    const departmentsEndpoint = 'departments'; // Custom endpoint
+    return this.http.get<departments[]>(`${this.apiUrl}/${departmentsEndpoint}`);
+
   }
 
   getEmployees(): Observable<employee[]> {

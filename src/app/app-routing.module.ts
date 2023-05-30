@@ -22,14 +22,14 @@ import { LoginauthGuard } from 'src/services/authservice/services/loginguard/log
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
     { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] }
     ,{path:'grid',component:EmployeegridComponent, canActivate: [AuthGuard]},
     {path:'posts',component:PostsComponent,canActivate: [AuthGuard]},
     {path:'login',component:LoginComponent,canActivate:[LoginauthGuard]},
     {path:'register',component:RegisterComponent},
-    { path: '**', component: NotfoundComponent }
+    { path: '**', component: NotfoundComponent}
 ];
 
 

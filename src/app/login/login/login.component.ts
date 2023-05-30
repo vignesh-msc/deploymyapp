@@ -69,6 +69,9 @@ export class LoginComponent {
     }
     return '';
   }
+  register(){
+    this.router.navigate(['/register']);
+  }
 
   // Getting the error messages for password field
   get passwordErrorMessage() {

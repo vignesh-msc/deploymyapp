@@ -12,17 +12,29 @@ export class employeecols {
     }
 
 }
+export class departments {
+    _id: string;
+    name:string;
+    constructor(id: string, name: string){
+        this._id = id;
+        this.name = name;
+
+    }
+
+}
 
 export class employee {
     empcode: number;
+    deptId?: string;
     empname: string;
-    department:string;
+    departmentname:string;
     isActive:boolean;
     roles?: role[];
-    constructor(empcode: number, empname: string,department: string,isActive: boolean,roles?:role[]) {
+    constructor(empcode: number,deptId:string, empname: string,departmentname: string,isActive: boolean,roles?:role[]) {
         this.empcode = empcode;
+        this.deptId = deptId;
         this.empname = empname;
-        this.department = department;
+        this.departmentname = departmentname;
         this.isActive = isActive;
         this.roles = roles;
     }

@@ -35,7 +35,7 @@ export class EmployeeSearchComponent {
           case 'empcode':
             return employee.empcode.toString().includes(this.searchTerm);
           case 'department':
-            return employee.department.toLowerCase().includes(this.searchTerm.toLowerCase());
+            return employee.departmentname.toLowerCase().includes(this.searchTerm.toLowerCase());
           case 'empname':
             return employee.empname.toLowerCase().includes(this.searchTerm.toLowerCase());
     

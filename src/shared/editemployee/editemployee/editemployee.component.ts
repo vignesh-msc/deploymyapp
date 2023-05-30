@@ -9,12 +9,12 @@ import { EmployeeService } from '../../../../src/services/employee/Employeeservi
 })
 export class EditemployeeComponent {
   constructor( private empservice:EmployeeService) {}
-  @Input() employee: employee ={ empcode: 0,empname: '',department:'',isActive: false};
+  @Input() employee: employee ={ empcode: 0,empname: '',departmentname:'',isActive: false};
   @Output() empeditmodelclose = new EventEmitter<boolean>();
 
   //  variables for emplyee
-  selectedEmployee: employee ={ empcode: 0,empname: '',department:'',isActive: false};
-  setEmployee: employee ={ empcode: 0,empname: '',department:'',isActive: false};
+  selectedEmployee: employee ={ empcode: 0,empname: '',departmentname:'',isActive: false};
+  setEmployee: employee ={ empcode: 0,empname: '',departmentname:'',isActive: false};
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['employee']) {
