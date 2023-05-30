@@ -19,7 +19,7 @@
         </div>  
       </div> -->
 
-<div class="container">
+<div class="container editemp">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="input-group input-group-lg mb-3">
@@ -32,7 +32,20 @@
       </div>
       <div class="input-group input-group-lg mb-3">
         <span class="input-group-text" id="basic-addon1">department:</span>
-        <input type="text" [(ngModel)]="selectedEmployee.departmentname" name="department" id="department" required class="form-control">
+        <!-- <span class="input-group-text" id="basic-addon1">department:</span>
+        <input type="text" [(ngModel)]="selectedEmployee.departmentname" name="department" id="department" required class="form-control"> -->
+        <!-- <select [(ngModel)]="selectedEmployee.departmentname" id="category">
+          <option value="" disabled >select an option</option>
+          <option *ngFor="let department of options" [value]="department._id"  [ngValue]="department">
+            {{department.name}}
+          </option>
+        </select> -->
+        <select [(ngModel)]="selectedEmployee.departmentname" >
+          <option [value]="null" disabled>Select an option</option>
+          <option *ngFor="let department of options" [value]="department.name">
+            {{department.name}}
+          </option>
+        </select>
       </div>
       <div class="btn-emp">
         <input type="button" (click)="editable(selectedEmployee,'api')" value="Edit" class="btn btn-primary mt-3">
