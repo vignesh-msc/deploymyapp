@@ -22,7 +22,7 @@
       <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   </head>
-<body>
+<body *ngIf="isAuthenticated">
   <header>
     <nav>
       <ul class="header-link">
@@ -45,14 +45,12 @@
             <li class="menu-link"><a routerLink="/employee" routerLinkActive="active"  [ngClass]="{ 'active': activeMenuItem === 'Employees' }" (click)="setActiveMenuItem('Employees')"><i class="fas fa-cog"></i>Employees</a></li>
             <li class="menu-link"><a routerLink="/posts" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'Posts' }" (click)="setActiveMenuItem('Posts')"><i class="fas fa-fw fa-wrench"></i>Posts</a></li>
             <li class="menu-link"><a routerLink="/grid" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'Grid' }" (click)="setActiveMenuItem('Grid')"><i class="fas fa-fw fa-table"></i>Grid</a></li>
+            <li class="menu-link"><a routerLink="/upload" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'Upload' }" (click)="setActiveMenuItem('Upload')"><i class="fas fa-fw fa-table"></i>Filesupload</a></li>
             
           </ul>
         </div>
       </div>
-      <div class="col-md-12 main-bar" *ngIf="!isAuthenticated"> 
-        <div class="header-strip"><span>Employee Information System</span></div>
-        <router-outlet></router-outlet> 
-        </div>
+ 
       <div class="col-md-10 main-bar" *ngIf="isAuthenticated"> 
         <div class="header-strip"><span>Employee Information System</span></div>
         <router-outlet></router-outlet> 
@@ -63,6 +61,12 @@
   </div>
 
 </section>
-   
+  </body>
+
+  <body *ngIf="!isAuthenticated">
+
+      <!-- <div class="header-strip"><span>Employee Information System</span></div> -->
+      <router-outlet></router-outlet>
+      <!-- <app-login></app-login> -->
   </body>
 </html>

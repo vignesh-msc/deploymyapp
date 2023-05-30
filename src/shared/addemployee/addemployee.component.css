@@ -4,7 +4,9 @@
   color: red;
 }
 
-
+select{
+  color: black;
+}
 .parent {
   background-color: whitesmoke;
   padding: 0;

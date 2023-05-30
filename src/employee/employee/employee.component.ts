@@ -15,7 +15,7 @@ import { EmployeeConstant } from '../../../src/app/constants/employee';
 export class EmployeeComponent {
   employeeslist: employee[] = [];
   employeemasterlist : employee[] =[];
-  editemployee: employee = { empcode: 0, empname: '', department: '', isActive: false };
+  editemployee: employee = { empcode: 0, empname: '', departmentname: '', isActive: false };
   isaddemp: boolean = false;
   iseditemp: boolean = true;
   localflagcode: boolean = true;
@@ -23,11 +23,11 @@ export class EmployeeComponent {
   display: string = "none";
   isempty: boolean = false;
   isLoading:boolean = false;
-  employee: employee = new employee(0, '', '', false);
+  employee: employee = new employee(0,'', '', '', false);
   // output variables and  viewchild for inter component communication
   @ViewChild('addComponent') addComponent?: AddemployeeComponent;
   @ViewChild('editComponent') editComponent?: EditemployeeComponent;
-  @Input() public _employee = new employee(0, '', '', false);
+  @Input() public _employee = new employee(0, '','', '', false);
 
   constructor(private empservice: EmployeeService, private router: Router) {
 
@@ -125,12 +125,12 @@ export class EmployeeComponent {
       case EmployeeConstant.EMPLOYEE_DEPARTMENT:
         if (this.localflagcode) {
           this.employeeslist = this.employeeslist.sort((a, b) => {
-            return (a.department).localeCompare(b.department);
+            return (a.departmentname).localeCompare(b.departmentname);
           });
 
         } else {
           this.employeeslist = this.employeeslist.sort((a, b) => {
-            return (b.department).localeCompare(a.department);
+            return (b.departmentname).localeCompare(a.departmentname);
           });
         }
         this.localflagcode = !this.localflagcode;

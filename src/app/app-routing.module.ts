@@ -13,6 +13,7 @@ import { AuthGuard } from '../../src/services/authservice/services/auth.guard';
 import { RegisterComponent } from '../app/register/register/register.component';
 import { NotfoundComponent } from './notfound/notfound/notfound.component';
 import { LoginauthGuard } from 'src/services/authservice/services/loginguard/loginauth.guard';
+import { DocuploadComponent } from './docupload/docupload/docupload.component';
 
 
 
@@ -22,14 +23,17 @@ import { LoginauthGuard } from 'src/services/authservice/services/loginguard/log
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
     { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] }
     ,{path:'grid',component:EmployeegridComponent, canActivate: [AuthGuard]},
     {path:'posts',component:PostsComponent,canActivate: [AuthGuard]},
     {path:'login',component:LoginComponent,canActivate:[LoginauthGuard]},
     {path:'register',component:RegisterComponent},
-    { path: '**', component: NotfoundComponent }
+    {path:'upload',component: DocuploadComponent},
+    { path: '', canActivate: [AuthGuard], component: DashboardComponent },
+    { path: '**', component: NotfoundComponent,canActivate: [AuthGuard]},
+   
 ];
 
 

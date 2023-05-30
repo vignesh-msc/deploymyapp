@@ -19,6 +19,7 @@ import { EmployeegridComponent } from '../app/employeegrid/employeegrid/employee
 import { RegisterComponent } from '../app/register/register/register.component';
 import { AuthInterceptor } from './interceptors/AuthInterceptor';
 import { SqrtPipe } from './pipes/sqrt';
+import { DocuploadComponent } from './docupload/docupload/docupload.component';
 
 
 
@@ -37,7 +38,8 @@ import { SqrtPipe } from './pipes/sqrt';
     LoaderComponent,
     EmployeegridComponent,
     RegisterComponent,
-    SqrtPipe
+    SqrtPipe,
+    DocuploadComponent
   ],
   imports: [
     BrowserModule,
