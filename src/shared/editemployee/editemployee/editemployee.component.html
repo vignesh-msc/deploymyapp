@@ -40,7 +40,7 @@
             {{department.name}}
           </option>
         </select> -->
-        <select [(ngModel)]="selectedEmployee.departmentname" >
+        <select [(ngModel)]="selectedEmployee.departmentname" class="form-control">
           <option [value]="null" disabled>Select an option</option>
           <option *ngFor="let department of options" [value]="department.name">
             {{department.name}}

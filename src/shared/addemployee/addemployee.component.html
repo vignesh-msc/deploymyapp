@@ -46,7 +46,7 @@
       <div class="input-group input-group-lg mb-3">
         <span class="input-group-text" id="basic-addon1">department:</span>
         <!-- <input type="text" [(ngModel)]="employee.department" name="department" id="department" required class="form-control" placeholder="Enter department"> -->
-        <select [(ngModel)]="defaultOptionId" id="category">
+        <select [(ngModel)]="defaultOptionId" id="category" class="form-control">
           <option value="" disabled selected>select an option</option>
           <option *ngFor="let department of options" [value]="department._id">
             {{ department.name }}
