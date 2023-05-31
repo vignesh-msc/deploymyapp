@@ -1,2 +1,57 @@
 
-<input type="file" #fileInput (change)="handleFileInput(fileInput.files)">
+<div class="container-fluid container-list pt-5">  
+  <table class="table tblgrid table-striped table-bordered mt-10"> 
+    <thead class="header-table">
+        <tr>
+            <th>Type</th>
+            <th>DocNo</th>
+            <th>Issue Date</th>
+            <th>Valid Till</th>
+            <th>Doc</th>
+            <th>Action</th>
+        </tr>
+     
+      </thead>
+      <tbody>
+        <tr>
+            <td><select [(ngModel)]="defaultOptionId" id="category" class="form-control">
+            <option value="" disabled selected>select an option</option>
+            <option *ngFor="let doc of options" [value]="doc._id">
+              {{ doc.docname }}
+            </option>
+          </select></td>
+        <td>
+            <div>
+                <input type="text" name="docnumber" id="docnumber"   [(ngModel)]="docno" class="form-control" placeholder="Docno">  
+            </div>
+           
+          </td>
+          <td>
+            <div class="input-group date" id="datepicker">
+                <input type="date" class="form-control" id="date"  [(ngModel)]="issueDate" (click)="handleDatePickerClick()"/>
+              </div>
+          </td>
+       <td>
+            <div class="input-group date" id="datepicker">
+                <input type="date" class="form-control" id="date"  [(ngModel)]="validDate" (click)="handleDatePickerClick()"/>
+              </div>
+          </td>
+          <td>
+            <div class="input-group">
+                <input type="file" #fileInput (change)="handleFileInput(fileInput.files)">
+              </div>
+          </td>
+          <td>
+            <div class="input-group">
+                <input type="button" value="Submit" class="btn-primary"(click)="showToast()">
+              </div>
+          </td>
+        </tr>
+    <!-- </form> -->
+      </tbody>
+
+      </table>
+    </div>
+
+
+

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,12 +20,17 @@ import { RegisterComponent } from '../app/register/register/register.component';
 import { AuthInterceptor } from './interceptors/AuthInterceptor';
 import { SqrtPipe } from './pipes/sqrt';
 import { DocuploadComponent } from './docupload/docupload/docupload.component';
+import { EmployeeprofileComponent } from './profile/employeeprofile/employeeprofile.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
 
 @NgModule({
-  declarations: [
+
+    declarations: [
     AppComponent,
     EmployeeComponent,
     LoginComponent,
@@ -39,7 +44,8 @@ import { DocuploadComponent } from './docupload/docupload/docupload.component';
     EmployeegridComponent,
     RegisterComponent,
     SqrtPipe,
-    DocuploadComponent
+    DocuploadComponent,
+    EmployeeprofileComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,9 @@ import { DocuploadComponent } from './docupload/docupload/docupload.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule
+
   ],
   providers: [HttpClient, {
     provide: HTTP_INTERCEPTORS,

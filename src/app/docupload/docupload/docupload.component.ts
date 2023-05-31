@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { document } from 'src/app/Models/docs';
 import { FileuploadService } from 'src/services/docuploadservice/fileupload.service';
+import { EmployeeService } from 'src/services/employee/Employeeservice';
+
+
 
 @Component({
   selector: 'app-docupload',
@@ -7,8 +11,21 @@ import { FileuploadService } from 'src/services/docuploadservice/fileupload.serv
   styleUrls: ['./docupload.component.css']
 })
 export class DocuploadComponent {
-  constructor(private fs:FileuploadService){
-
+  options:document[] =[];
+  defaultOptionId: string  ='';
+  issueDate: Date = new Date();
+  validDate: Date = new Date();
+  validtillDate: Date = new Date();
+  docno: string=''
+ 
+   constructor(private fs:FileuploadService,private empservice:EmployeeService){
+  }
+  ngOnInit() {
+   
+  
+    this.empservice.getDocuments().subscribe((data)=>{
+      this.options =data;
+    })
   }
   handleFileInput(files: FileList): void {
     const file = files.item(0);
@@ -35,4 +52,13 @@ export class DocuploadComponent {
       });
     }
   }
+  handleDatePickerClick() {
+    console.log('Date picker clicked!');
+
+  }
+  showToast(): void {
+    debugger;
+    // this.toastr.error('I am a toaster');
+  }
+
 }

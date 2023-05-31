@@ -1,0 +1,99 @@
+<div class="container-fluid container-list">
+    <div class="border-bottom text-dark customer">
+    <p class="text-dark font-weight-bold pt-4">Employee Profile</p>  
+    </div>
+    <span class="border-bottom-5"></span>
+    <p class="text-dark font-weight-bold small pt-4 pl-3 customer1">Enter  Employee Details</p> 
+    <div class="container pt-4">
+      <div class="row">
+        <div class="col-md-4">
+          <label class="form-label fs-6 fw-normal">EmployeeID</label>
+          <input type="number" class="form-control form-control-lg mt-2" placeholder="EmployeeID">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fs-6 fw-normal">Name</label>
+          <input type="text" class="form-control form-control-lg mt-2" placeholder="Name">
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      <div class="row pt-5">
+        <div class="col-md-4">
+          <label class="form-label fs-6 fw-normal">Gender</label>
+          <select [(ngModel)]="genderType" id="category" class="form-control">
+            <option value="" disabled selected>select an option</option>
+            <option>
+             Male
+            </option>
+            <option>
+                Female
+               </option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fs-6 fw-normal">Contact Details</label>
+          <textarea id="textarea" rows="3" class="form-control"></textarea>
+        </div>
+        <!-- <div class="col-md-4">
+          <label class="form-label fs-6 fw-normal">User Role</label>
+          <input type="text" class="form-control form-control-lg mt-2">
+        </div> -->
+  
+      </div>
+      <div class="row pt-5">
+        <div class="col-md-4">
+          <label class="form-label fs-6">Hire Date</label>
+          <div class="input-group date" id="datepicker">
+            <input type="date" class="form-control" id="date" [(ngModel)]="selectedDate" (click)="handleDatePickerClick()"/>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fs-6 ">Employement Type</label>
+          <select [(ngModel)]="contractType" id="category" class="form-control">
+            <option value="" disabled selected>select an option</option>
+            <option>
+             Permanent
+            </option>
+            <option>
+               Contract
+               </option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fs-6 fw-normal">Last Name</label>
+          <input type="text" class="form-control form-control-lg mt-2" placeholder="last name">
+        </div>
+  
+      </div>
+      <div class="row pt-5">
+        <div class="col-md-4">
+          <label class="form-label fs-6 fw-normal">Job Title</label>
+          <input type="text" class="form-control form-control-lg mt-2" placeholder="Email">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fs-6 fw-normal">Department</label>
+          <select [(ngModel)]="defaultOptionId" id="category" class="form-control">
+            <option value="" disabled selected>select an option</option>
+            <option *ngFor="let department of options" [value]="department._id">
+              {{ department.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fs-6 fw-normal">Profile Picture</label>
+          <div class="input-group">
+            <input type="file" class="form-control" id="profilePic" accept="image/*">
+          </div>
+        </div>
+        <div class="col-md-4 pt-5">
+            <label class="form-label fs-6 fw-normal">Emergency Contact Details</label>
+            <textarea id="textarea" rows="3" class="form-control"></textarea>
+          </div>
+      </div>
+      <div class="row pt-5">
+        <div class="col-md-6 mt-3">
+          <input type="submit" class="btn btn-warning btn-lg submit-me" value="SUBMIT">
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+    </div>
+  </div>

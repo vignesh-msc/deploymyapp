@@ -14,6 +14,7 @@ import { RegisterComponent } from '../app/register/register/register.component';
 import { NotfoundComponent } from './notfound/notfound/notfound.component';
 import { LoginauthGuard } from 'src/services/authservice/services/loginguard/loginauth.guard';
 import { DocuploadComponent } from './docupload/docupload/docupload.component';
+import { EmployeeprofileComponent } from './profile/employeeprofile/employeeprofile.component';
 
 
 
@@ -31,6 +32,7 @@ const routes: Routes = [
     {path:'login',component:LoginComponent,canActivate:[LoginauthGuard]},
     {path:'register',component:RegisterComponent},
     {path:'upload',component: DocuploadComponent},
+    {path:'profile',component: EmployeeprofileComponent},
     { path: '', canActivate: [AuthGuard], component: DashboardComponent },
     { path: '**', component: NotfoundComponent,canActivate: [AuthGuard]},
    
