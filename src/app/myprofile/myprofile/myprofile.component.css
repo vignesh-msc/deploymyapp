@@ -1,0 +1,42 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .profile {
+    background-color: #f7f7f7;
+    padding: 20px;
+  }
+  
+  .profile h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-details p {
+    margin-bottom: 10px;
+  }
+  
+  .edit-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .edit-btn:hover {
+    background-color: #0056b3;
+  }
+  .container-list{
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    color:black;
+    overflow: auto;
+    height: 100vh;
+    font-size:15px;
+    font-weight: normal!important;
+}
+  

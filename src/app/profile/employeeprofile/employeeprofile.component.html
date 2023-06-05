@@ -1,81 +1,72 @@
-<div class="container-fluid container-list">
-    <div class="border-bottom text-dark customer">
+<div class="container-fluid container-list" *ngIf="0">
+  <div class="border-bottom text-dark customer">
     <p class="text-dark font-weight-bold pt-4">Employee Profile</p>  
-    </div>
-    <span class="border-bottom-5"></span>
-    <p class="text-dark font-weight-bold small pt-4 pl-3 customer1">Enter  Employee Details</p> 
-    <div class="container pt-4">
-      <div class="row">
+  </div>
+  <span class="border-bottom-5"></span>
+  <p class="text-dark font-weight-bold small pt-4 pl-3 customer1">Enter Employee Details</p> 
+  <div class="container pt-4">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+     
         <div class="col-md-4">
           <label class="form-label fs-6 fw-normal">EmployeeID</label>
-          <input type="number" class="form-control form-control-lg mt-2" placeholder="EmployeeID">
+          <input type="number" class="form-control form-control-lg mt-2" placeholder="EmployeeID" formControlName="empcode">
         </div>
         <div class="col-md-4">
           <label class="form-label fs-6 fw-normal">Name</label>
-          <input type="text" class="form-control form-control-lg mt-2" placeholder="Name">
+          <input type="text" class="form-control form-control-lg mt-2" placeholder="Name" formControlName="name">
         </div>
         <div class="col-md-4"></div>
       </div>
+  
       <div class="row pt-5">
         <div class="col-md-4">
           <label class="form-label fs-6 fw-normal">Gender</label>
-          <select [(ngModel)]="genderType" id="category" class="form-control">
+          <select  id="category" class="form-control" formControlName="gender">
             <option value="" disabled selected>select an option</option>
-            <option>
-             Male
-            </option>
-            <option>
-                Female
-               </option>
+            <option>Male</option>
+            <option>Female</option>
           </select>
         </div>
         <div class="col-md-4">
           <label class="form-label fs-6 fw-normal">Contact Details</label>
-          <textarea id="textarea" rows="3" class="form-control"></textarea>
+          <textarea id="textarea" rows="3" class="form-control" formControlName="contactdetails"></textarea>
         </div>
-        <!-- <div class="col-md-4">
-          <label class="form-label fs-6 fw-normal">User Role</label>
-          <input type="text" class="form-control form-control-lg mt-2">
-        </div> -->
-  
+        <div class="col-md-4">
+          <label class="form-label fs-6 fw-normal">First Name</label>
+          <input type="text" class="form-control form-control-lg mt-2" placeholder="First name" formControlName="firstname">
+        </div>
       </div>
       <div class="row pt-5">
         <div class="col-md-4">
-          <label class="form-label fs-6">Hire Date</label>
-          <div class="input-group date" id="datepicker">
-            <input type="date" class="form-control" id="date" [(ngModel)]="selectedDate" (click)="handleDatePickerClick()"/>
-          </div>
+          <label class="form-label fs-6 fw-normal">Last Name</label>
+          <input type="text" class="form-control form-control-lg mt-2" placeholder="last name" formControlName="lastname">
         </div>
         <div class="col-md-4">
-          <label class="form-label fs-6 ">Employement Type</label>
-          <select [(ngModel)]="contractType" id="category" class="form-control">
+          <label class="form-label fs-6 ">Employment Type</label>
+          <select  id="category" class="form-control" formControlName="employementType">
             <option value="" disabled selected>select an option</option>
-            <option>
-             Permanent
-            </option>
-            <option>
-               Contract
-               </option>
+            <option>Permanent</option>
+            <option>Contract</option>
           </select>
         </div>
         <div class="col-md-4">
-          <label class="form-label fs-6 fw-normal">Last Name</label>
-          <input type="text" class="form-control form-control-lg mt-2" placeholder="last name">
+          <label class="form-label fs-6">Hire Date</label>
+          <div class="input-group date" id="datepicker">
+            <input type="date" class="form-control" id="date"click="handleDatePickerClick" formControlName="hireDate">
+          </div>
         </div>
-  
       </div>
       <div class="row pt-5">
         <div class="col-md-4">
           <label class="form-label fs-6 fw-normal">Job Title</label>
-          <input type="text" class="form-control form-control-lg mt-2" placeholder="Email">
+          <input type="text" class="form-control form-control-lg mt-2" placeholder="Job Title" formControlName="jobtitle">
         </div>
         <div class="col-md-4">
           <label class="form-label fs-6 fw-normal">Department</label>
-          <select [(ngModel)]="defaultOptionId" id="category" class="form-control">
+          <select  id="category" class="form-control" formControlName="departmentname"  (change)="onChangeDepartment($event)">
             <option value="" disabled selected>select an option</option>
-            <option *ngFor="let department of options" [value]="department._id">
-              {{ department.name }}
-            </option>
+            <option *ngFor="let department of options" [value]="department._id">{{ department.name }}</option>
           </select>
         </div>
         <div class="col-md-4">
@@ -85,15 +76,149 @@
           </div>
         </div>
         <div class="col-md-4 pt-5">
-            <label class="form-label fs-6 fw-normal">Emergency Contact Details</label>
-            <textarea id="textarea" rows="3" class="form-control"></textarea>
-          </div>
+          <label class="form-label fs-6 fw-normal">Emergency Contact Details</label>
+          <textarea id="textarea" rows="3" class="form-control" formControlName="emergencycontactdetails"></textarea>
+        </div>
       </div>
       <div class="row pt-5">
         <div class="col-md-6 mt-3">
-          <input type="submit" class="btn btn-warning btn-lg submit-me" value="SUBMIT">
+          <input type="submit" class="btn btn-warning btn-lg submit-me"   (ngSubmit)="onSubmit()" value="SUBMIT">
         </div>
         <div class="col-md-6"></div>
       </div>
-    </div>
+    
+</form>
   </div>
+</div>
+
+<div class="container-fluid container-list">
+  <div class="row pt-5">
+    <div class="col-md-8 offset-md-2">
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div *ngIf="currentStep === 1" formGroupName="employee">
+          <h2>Step 1: Personal Information</h2>
+          <div class="form-group">
+            <label>Employee Code</label>
+            <input type="text" class="form-control" formControlName="empcode">
+          </div>
+          <!-- Repeat the same pattern for other fields -->
+         
+          
+          <div class="text-right">
+            <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+          </div>
+        </div>
+        
+        <div *ngIf="currentStep === 2" formGroupName="educationqualification">
+          <!-- Fields and validation similar to Step 1 -->
+          <h2>Step 2: Education Qualification</h2>
+          <div class="form-group">
+            <div class="row pt-5">
+              <div class="col-md-4">
+                <label>Degree</label>
+                <input type="text" class="form-control" formControlName="degree">
+              </div>
+              <!-- <div class="col-md-4">
+                <label>Degree</label>
+                <input type="text" class="form-control" formControlName="degree">
+              </div> -->
+              <div class="col-md-4">
+                <label>institution</label>
+                <input type="text" class="form-control" formControlName="institution">
+              </div>
+              <div class="col-md-4">
+                <label>year</label>
+                <input type="number" class="form-control" formControlName="year">
+              </div>
+            </div>    
+          </div>
+          <div class="text-right">
+            <button type="button" class="btn btn-primary" (click)="prevStep()">Previous</button>
+            <button type="button" class="btn btn-primary ml-2" (click)="nextStep()">Next</button>
+          </div>
+        </div>
+        
+        <!-- Repeat the pattern for other sections -->
+        
+        <div *ngIf="currentStep === 3" formGroupName="officialdetails">
+          <h2>Step 3: Official Details</h2>
+          <div class="form-group">
+            <div class="row pt-5">
+              <div class="col-md-4">
+                <label>Department</label>
+                <input type="text" class="form-control" formControlName="department">
+              </div>
+              <div class="col-md-4">
+                <label>Company</label>
+                <input type="text" class="form-control" formControlName="company">
+                </div>
+                <div class="col-md-4">
+                  <label>Status</label>
+                  <input type="number" class="form-control" formControlName="employeestatus">
+
+                </div>
+            </div>
+            <div class="row pt-5">
+              <div class="col-md-4">
+                <label>Manager</label>
+                <input type="number" class="form-control" formControlName="manager">
+              </div>
+              <div class="col-md-4">
+                <label>Officelocation</label>
+                <input type="number" class="form-control" formControlName="officelocation">
+              </div>
+              <div class="col-md-4">
+                <label>Work Location</label>
+                <input type="text" class="form-control" formControlName="worklocation">
+              </div>
+           
+            </div>   
+            <div class="row">
+              <div class="col-md-6 pt-3">
+                <label>DateofJoining</label>
+                <input type="text" class="form-control" formControlName="dateofJoining">
+              </div>
+             
+                <div class="col-md-6 pt-3">
+                  <label>Designation</label>
+                  <input type="text" class="form-control" formControlName="designation">
+                </div>
+            </div>  
+          </div>
+          <div class="text-right">
+            <button type="button" class="btn btn-primary" (click)="prevStep()">Previous</button>
+            <button type="button" class="btn btn-primary ml-2" (click)="nextStep()">Next</button>
+          </div>
+          </div>
+          <div *ngIf="currentStep === 4" formGroupName="statutorydetails">
+            <h2>Step 3: Statutory Details</h2>
+            <div class="form-group">
+              <div class="row pt-5">
+                <div class="col-md-4">
+                  <label>Department</label>
+                  <input type="text" class="form-control" formControlName="panNumber">
+                </div>
+                <div class="col-md-4">
+                  <label>aadhaarNumber</label>
+                  <input type="text" class="form-control" formControlName="aadhaarNumber">
+                </div>
+                <div class="col-md-4">
+                  <label>ESINumber</label>
+                  <input type="text" class="form-control" formControlName="esiNumber">
+                </div>
+                <div class="col-md-4 pt-3">
+                  <label>Provident Number</label>
+                  <input type="text" class="form-control" formControlName="pfNumber">
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <button type="button" class="btn btn-primary" (click)="prevStep()">Previous</button>
+              <!-- <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button> -->
+            </div>
+
+          </div>
+          <!-- Fields and validation similar to previous steps -->
+          
+         
+

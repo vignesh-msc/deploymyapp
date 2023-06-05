@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { authservice } from '../../../services/authservice/authservice ';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent {
   submitted = false;
   errorMessage: string = '';
   public router: Router;
+  private subject = new Subject<any>();
 
   constructor(private authService: authservice, private formBuilder: FormBuilder, router: Router) {
     this.loginForm = this.formBuilder.group({
@@ -44,8 +46,11 @@ export class LoginComponent {
       this.authService.login(this.loginForm.get('email')!.value, this.loginForm.get('password')!.value)
       .subscribe(
         data => {
+          console.log(data);
           localStorage.setItem('token', data.token);
+          localStorage.setItem('UserID', data.userID);
           // handle successful login
+          this.subject.next({ UserId:data.userID });
           this.router.navigate(['/dashboard']);
           this.errorMessage = '';
         },

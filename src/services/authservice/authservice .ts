@@ -23,19 +23,9 @@ import { register } from "src/app/Models/register";
     }
   
     public login(email: string, password: string): Observable<any> {
-      // Make API call to authenticate user and get a JWT token
-      // ...
       return this.http.post<any>(`${environment.apiUrl}/login`, { email, password });
-  
-      // Store token and user role
-    // localStorage.setItem('token', token);
-    //  this._userRole = user.role;
-  
-
     }
     public register(objregister:register): Observable<any> {
-      // Make API call to authenticate user and get a JWT token
-      // ...
       return this.http.post<any>(`${environment.apiUrl}/register`, objregister);
   
       // Store token and user role
@@ -50,11 +40,15 @@ import { register } from "src/app/Models/register";
      // this._userRole = null;
      this.subject.next( false );
     }
+    
   
     public isLoggedIn(): boolean {
       // Check if user is authenticated by checking for token
       this.subject.next({ isLoggedIn: (!!localStorage.getItem('token')) });
       return !!(localStorage.getItem('token'));
+    }
+    public getUserID(): string{
+      return localStorage.getItem('UserID')!;
     }
 
     getLoggedinMessage(): Observable<boolean> {

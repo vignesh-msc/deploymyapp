@@ -73,6 +73,7 @@ export class EmployeeComponent {
     this.empservice.getEmployees().subscribe(
       (data) => {
         this.employeeslist = data;
+        console.log('this.employeeslist',this.employeeslist);
         this.employeeslist = this.employeeslist.filter(x => x.isActive === true);
         this.employeemasterlist = this.employeeslist;
         this.isLoading = false;

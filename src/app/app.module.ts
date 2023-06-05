@@ -21,15 +21,19 @@ import { AuthInterceptor } from './interceptors/AuthInterceptor';
 import { SqrtPipe } from './pipes/sqrt';
 import { DocuploadComponent } from './docupload/docupload/docupload.component';
 import { EmployeeprofileComponent } from './profile/employeeprofile/employeeprofile.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
+import { MyprofileComponent } from './myprofile/myprofile/myprofile.component';
 
 
 
 
 
 @NgModule({
-
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
     declarations: [
     AppComponent,
     EmployeeComponent,
@@ -46,6 +50,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SqrtPipe,
     DocuploadComponent,
     EmployeeprofileComponent,
+    MyprofileComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,14 +59,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
 
   ],
   providers: [HttpClient, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }],
+  },DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
