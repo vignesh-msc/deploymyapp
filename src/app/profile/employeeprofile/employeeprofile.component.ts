@@ -7,6 +7,9 @@ import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { EmployeeregistrationService } from 'src/services/employeeregistragtion/employeeregistration.service';
 import { authservice } from 'src/services/authservice/authservice ';
+import { employee,educationqualification,Bankdetails,officialDetails
+,statutorydetails } from 'src/app/Models/profile';
+import { ProfilecreationService } from 'src/services/profileservice/profilecreation.service';
 
 @Component({
   selector: 'app-employeeprofile',
@@ -28,74 +31,40 @@ export class EmployeeprofileComponent {
   constructor(private empservice: EmployeeService,private formBuilder: FormBuilder,
     private datePipe: DatePipe,
     private toastr: ToastrService,private empregservice:EmployeeregistrationService,
-    private auth:authservice
+    private auth:authservice,private pf:ProfilecreationService
     ) {
-      this.employeeForm = this.formBuilder.group({
-        empcode:[this.employee.empcode, [Validators.required, this.validateEmployeeId()]],
-        name: [this.employee.name,Validators.required],
-        gender: [this.employee.gender,Validators.required],
-        firstname: [this.employee.firstname,Validators.required],
-        lastname: [this.employee.lastname,Validators.required],
-        employementType: [this.employee.employementType,Validators.required],
-        contactdetails: [this.employee.contactdetails,Validators.required],
-        hireDate: [this.datePipe.transform(this.employee.hireDate, 'yyyy-MM-dd'), Validators.required],
-        jobtitle: [this.employee.jobtitle,Validators.required],
-        departmentname: [this.employee.departmentname,Validators.required],
-        emergencycontactdetails: [this.employee.emergencycontactdetails,Validators.required]
-          ,isActive: this.employee.isActive
-        // deptId: [this.employee.gender,Validators.required],
-        // userId: [this.employee.gender,Validators.required],
-      });
+    
+
   }
   ngOnInit() {
-    // this.empservice.getEmployees().subscribe(data => {
-    //   this.employeelist = data;
-    // });
     this.empservice.getDepartments().subscribe((data)=>{
       this.options =data;
-    });
-    this.employeeForm = this.formBuilder.group({
-      empcode:[this.employee.empcode, [Validators.required, this.validateEmployeeId()]],
-      name: [this.employee.name,Validators.required],
-      gender: [this.employee.gender,Validators.required],
-      firstname: [this.employee.firstname,Validators.required],
-      lastname: [this.employee.lastname,Validators.required],
-      employementType: [this.employee.employementType,Validators.required],
-      contactdetails: [this.employee.contactdetails,Validators.required],
-      hireDate: [this.datePipe.transform(this.employee.hireDate, 'yyyy-MM-dd'), Validators.required],
-      jobtitle: [this.employee.jobtitle,Validators.required],
-      departmentname: [this.employee.departmentname,Validators.required],
-      emergencycontactdetails: [this.employee.emergencycontactdetails,Validators.required],
-      //  isActive: [this.employee.gender,Validators.required],
-      deptId: this.employee.deptId,
-      userId: this.employee.userId,
-      isActive: this.employee.isActive
     });
     this.form = this.formBuilder.group({
       // Define your form fields here
       employee: this.formBuilder.group({
         empcode: ['', Validators.required],
-        isActive: ['', Validators.required],
-        UserId: ['', [Validators.required]]
+        isActive: [''],
+        UserId: ['']
       }),
       educationqualification: this.formBuilder.group({
         degree: ['', Validators.required],
         institution: ['', Validators.required],
-        year: [0, Validators.required]
+        year: [0, [Validators.required, this.validateNumericId()]]
       }),
       // familyDetails: this.formBuilder.group({
       //   spouseName: ['', Validators.required],
       //   children: this.formBuilder.array([])
       // }),
       officialdetails: this.formBuilder.group({
-        department: ['', Validators.required],
+        departmentname: ['', Validators.required],
         company: ['', Validators.required],
         employeestatus: ['', Validators.required],
         employeetype: ['', Validators.required],
         manager: ['', Validators.required],
         officelocation: ['', Validators.required],
         worklocation: ['', Validators.required],
-        dateofJoining: [this.datePipe.transform(this.employee.hireDate, 'yyyy-MM-dd'), Validators.required],
+        dateofJoining: [null, Validators.required],
         designation: ['', Validators.required],
       }),
       statutorydetails: this.formBuilder.group({
@@ -120,15 +89,28 @@ export class EmployeeprofileComponent {
   nextStep() {
     this.currentStep++;
   }
+  nextStepemployee(formGroup: AbstractControl){
+    if(formGroup.valid){
+      this.currentStep++;
+    } else{
+    this.toastr.error('Please fill all the details in the form');
+    }
+ 
+  }
 
   // Method to navigate to the previous step
-  prevStep() {
-    this.currentStep--;
+  prevStep(formGroup: AbstractControl) {
+    if(formGroup.valid){
+      this.currentStep--;
+    } else{
+      this.toastr.error('Please fill all the details in the form');
+    }
+   
   }
-   validateEmployeeId(): ValidatorFn {
+   validateNumericId(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
-      const employeeId = control.value;
-      if (employeeId === 0) {
+      const Id = control.value;
+      if (Id === 0) {
         return { invalidEmployeeId: true };
       }
       return null;
@@ -138,6 +120,9 @@ export class EmployeeprofileComponent {
   get f() {
     return this.employeeForm.controls;
   }
+  get g() {
+    return this.form.controls;
+  }
   onChangeDepartment(event: any) {
     const selectedOption = event.target.value;
     this.employee.deptId = selectedOption
@@ -145,63 +130,46 @@ export class EmployeeprofileComponent {
   }
 
   onSubmit() {
-    if (this.employeeForm.valid) {
-      this.auth.getUserID()
-      this.employee.userId = this.auth.getUserID();
-      const valuesToPatch = {
-        deptId: this.employee.deptId,
-        userId: this.employee.userId,
-        isActive:true,
-        departmentname:this.options.filter(x=>x._id === this.employee.deptId)[0].name
-      };
-      this.employeeForm.patchValue(valuesToPatch);
-      // Perform form submission or data processing
-      this.empregservice.addEmployeedetails(this.employeeForm.value).subscribe({
+   
+  }
+  submitForm(){
+    if(this.form.valid){
+      let reqbody = this.prepareModel();
+      console.log('reqbody',reqbody);
+      this.pf.addEmployeeprofile(reqbody).subscribe({
         next: (response) => {
+          console.log('response',response);
+          this.toastr.error('Employee Profile created Successfully');
         },
         error: (error) => {
           this.toastr.error(error.error);
         },
       });
-      console.log(this.employeeForm.value);
-    } else {
-      // Handle form validation errors
-      if (this.employeeForm.invalid) {
-        // Display toast message for each validation error
-        if (this.f.empcode.invalid) {
-          this.toastr.error('Please enter a employeeId.');
-        }
-        if (this.f.name.invalid) {
-          this.toastr.error('Please enter the document number.');
-        }
-        if (this.f.firstname.invalid) {
-          this.toastr.error('Please enter a firstname');
-        }
-        if (this.f.lastname.invalid) {
-          this.toastr.error('Please enter a last name');
-        }
-        if (this.f.contactdetails.invalid) {
-          this.toastr.error('Please enter contactdetails');
-        }
-        if (this.f.hireDate.invalid) {
-          this.toastr.error('Please select a hire date');
-        }
-        if (this.f.jobtitle.invalid) {
-          this.toastr.error('Please enter a valid job title');
-        }
-        if (this.f.departmentname.invalid) {
-          this.toastr.error('Please enter a department name');
-        }
-        if (this.f.emergencycontactdetails.invalid) {
-          this.toastr.error('Please enter emergency contact details');
-        }
-        return;
-    }
-    
+    } else{
+      this.toastr.error('Please fill all the details in the form');
     }
   }
-  submitForm(){
-    
+  prepareModel(): any{
+    let reqbody: any={};
+    const formValues = this.form.value;
+    let employeeentity = new employee(formValues.employee.empcode,true,this.auth.getUserID());
+    let edqualificationentity = new educationqualification('0',formValues.educationqualification.degree,
+    formValues.educationqualification.institution,formValues.educationqualification.year);
+    let bankdetailsenttity = new Bankdetails('0',formValues.bankdetails.accountNumber,formValues.bankdetails.bankName,
+    formValues.bankdetails.branch,formValues.bankdetails.ifsccode);
+    let deptId = this.options.filter(x=>x._id === formValues.officialdetails.departmentname)[0].name;
+    let officialdetailsentity = new officialDetails('0',deptId,formValues.officialdetails.company,formValues.officialdetails.employeestatus,
+    formValues.officialdetails.employeetype,formValues.officialdetails.manager,formValues.officialdetails.officelocation,
+    formValues.officialdetails.worklocation,formValues.officialdetails.dateofJoining,formValues.officialdetails.designation);
+    let statutorydetailsentity = new statutorydetails('0',formValues.statutorydetails.panNumber,
+    formValues.statutorydetails.aadhaarNumber,formValues.statutorydetails.esiNumber,formValues.statutorydetails.pfNumber);
+    reqbody.employeeentity = employeeentity;
+    reqbody.edqualificationentity = edqualificationentity;
+    reqbody.bankdetailsenttity = bankdetailsenttity;
+    reqbody.officialdetailsentity = officialdetailsentity;
+    reqbody.statutorydetailsentity = statutorydetailsentity;
+    return reqbody;
+      
   }
 }
 

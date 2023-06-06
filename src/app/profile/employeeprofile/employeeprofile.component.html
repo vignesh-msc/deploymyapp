@@ -1,95 +1,4 @@
-<div class="container-fluid container-list" *ngIf="0">
-  <div class="border-bottom text-dark customer">
-    <p class="text-dark font-weight-bold pt-4">Employee Profile</p>  
-  </div>
-  <span class="border-bottom-5"></span>
-  <p class="text-dark font-weight-bold small pt-4 pl-3 customer1">Enter Employee Details</p> 
-  <div class="container pt-4">
-    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-     
-        <div class="col-md-4">
-          <label class="form-label fs-6 fw-normal">EmployeeID</label>
-          <input type="number" class="form-control form-control-lg mt-2" placeholder="EmployeeID" formControlName="empcode">
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fs-6 fw-normal">Name</label>
-          <input type="text" class="form-control form-control-lg mt-2" placeholder="Name" formControlName="name">
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-  
-      <div class="row pt-5">
-        <div class="col-md-4">
-          <label class="form-label fs-6 fw-normal">Gender</label>
-          <select  id="category" class="form-control" formControlName="gender">
-            <option value="" disabled selected>select an option</option>
-            <option>Male</option>
-            <option>Female</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fs-6 fw-normal">Contact Details</label>
-          <textarea id="textarea" rows="3" class="form-control" formControlName="contactdetails"></textarea>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fs-6 fw-normal">First Name</label>
-          <input type="text" class="form-control form-control-lg mt-2" placeholder="First name" formControlName="firstname">
-        </div>
-      </div>
-      <div class="row pt-5">
-        <div class="col-md-4">
-          <label class="form-label fs-6 fw-normal">Last Name</label>
-          <input type="text" class="form-control form-control-lg mt-2" placeholder="last name" formControlName="lastname">
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fs-6 ">Employment Type</label>
-          <select  id="category" class="form-control" formControlName="employementType">
-            <option value="" disabled selected>select an option</option>
-            <option>Permanent</option>
-            <option>Contract</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fs-6">Hire Date</label>
-          <div class="input-group date" id="datepicker">
-            <input type="date" class="form-control" id="date"click="handleDatePickerClick" formControlName="hireDate">
-          </div>
-        </div>
-      </div>
-      <div class="row pt-5">
-        <div class="col-md-4">
-          <label class="form-label fs-6 fw-normal">Job Title</label>
-          <input type="text" class="form-control form-control-lg mt-2" placeholder="Job Title" formControlName="jobtitle">
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fs-6 fw-normal">Department</label>
-          <select  id="category" class="form-control" formControlName="departmentname"  (change)="onChangeDepartment($event)">
-            <option value="" disabled selected>select an option</option>
-            <option *ngFor="let department of options" [value]="department._id">{{ department.name }}</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fs-6 fw-normal">Profile Picture</label>
-          <div class="input-group">
-            <input type="file" class="form-control" id="profilePic" accept="image/*">
-          </div>
-        </div>
-        <div class="col-md-4 pt-5">
-          <label class="form-label fs-6 fw-normal">Emergency Contact Details</label>
-          <textarea id="textarea" rows="3" class="form-control" formControlName="emergencycontactdetails"></textarea>
-        </div>
-      </div>
-      <div class="row pt-5">
-        <div class="col-md-6 mt-3">
-          <input type="submit" class="btn btn-warning btn-lg submit-me"   (ngSubmit)="onSubmit()" value="SUBMIT">
-        </div>
-        <div class="col-md-6"></div>
-      </div>
-    
-</form>
-  </div>
-</div>
+
 
 <div class="container-fluid container-list">
   <div class="row pt-5">
@@ -97,7 +6,7 @@
       <form [formGroup]="form" (ngSubmit)="submitForm()">
         <div *ngIf="currentStep === 1" formGroupName="employee">
           <h2>Step 1: Personal Information</h2>
-          <div class="form-group">
+          <div class="form-group pt-5">
             <label>Employee Code</label>
             <input type="text" class="form-control" formControlName="empcode">
           </div>
@@ -105,7 +14,7 @@
          
           
           <div class="text-right">
-            <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+            <button type="button" class="btn btn-primary btn-lg" (click)="nextStepemployee(form.get('employee'))">Next</button>
           </div>
         </div>
         
@@ -133,8 +42,8 @@
             </div>    
           </div>
           <div class="text-right">
-            <button type="button" class="btn btn-primary" (click)="prevStep()">Previous</button>
-            <button type="button" class="btn btn-primary ml-2" (click)="nextStep()">Next</button>
+            <button type="button" class="btn btn-primary btn-lg" (click)="prevStep(form.get('educationqualification'))">Previous</button>
+            <button type="button" class="btn btn-primary ml-2 btn-lg" (click)="nextStepemployee(form.get('educationqualification'))">Next</button>
           </div>
         </div>
         
@@ -146,7 +55,11 @@
             <div class="row pt-5">
               <div class="col-md-4">
                 <label>Department</label>
-                <input type="text" class="form-control" formControlName="department">
+                <select  id="category" class="form-control" formControlName="departmentname"  (change)="onChangeDepartment($event)">
+                  <option value="" disabled selected>select an option</option>
+                  <option *ngFor="let department of options" [value]="department._id">{{ department.name }}</option>
+                <!-- <input type="text" class="form-control" formControlName="department"> -->
+                </select>
               </div>
               <div class="col-md-4">
                 <label>Company</label>
@@ -154,40 +67,56 @@
                 </div>
                 <div class="col-md-4">
                   <label>Status</label>
-                  <input type="number" class="form-control" formControlName="employeestatus">
+                  <input type="text" class="form-control" formControlName="employeestatus">
+                 
+                  <!-- <input type="text" class="form-control" formControlName="department"> -->
+                  <!-- </select> -->
 
                 </div>
             </div>
             <div class="row pt-5">
               <div class="col-md-4">
                 <label>Manager</label>
-                <input type="number" class="form-control" formControlName="manager">
+                <input type="text" class="form-control" formControlName="manager">
               </div>
               <div class="col-md-4">
                 <label>Officelocation</label>
-                <input type="number" class="form-control" formControlName="officelocation">
+                <!-- <input type="text" class="form-control" formControlName="officelocation"> -->
+                <textarea id="textarea" rows="3" class="form-control" formControlName="officelocation"></textarea>
               </div>
               <div class="col-md-4">
                 <label>Work Location</label>
-                <input type="text" class="form-control" formControlName="worklocation">
+                <!-- <input type="text" class="form-control" formControlName="worklocation"> -->
+                <textarea id="textarea" rows="3" class="form-control" formControlName="worklocation"></textarea>
               </div>
            
             </div>   
             <div class="row">
-              <div class="col-md-6 pt-3">
+              <div class="col-md-4 pt-3">
                 <label>DateofJoining</label>
-                <input type="text" class="form-control" formControlName="dateofJoining">
+                <!-- <input type="text" class="form-control" formControlName="dateofJoining"> -->
+                <input type="date" class="form-control" id="date"click="handleDatePickerClick" formControlName="dateofJoining">
               </div>
              
-                <div class="col-md-6 pt-3">
+                <div class="col-md-4 pt-3">
+                  <label>EmployeeType</label>
+                  <!-- <input type="text" class="form-control" formControlName="employeetype"> -->
+                  <select  id="category" class="form-control" formControlName="employeetype"  (change)="onChangeDepartment($event)">
+                    <option value="" disabled selected>select an option</option>
+                    <option value="contract">contract</option>
+                    <option value="permanent">permanent</option>
+                  </select>
+                </div>
+                <div class="col-md-4 pt-3">
                   <label>Designation</label>
                   <input type="text" class="form-control" formControlName="designation">
                 </div>
             </div>  
           </div>
           <div class="text-right">
-            <button type="button" class="btn btn-primary" (click)="prevStep()">Previous</button>
-            <button type="button" class="btn btn-primary ml-2" (click)="nextStep()">Next</button>
+            <button type="button" class="btn btn-primary btn-lg" (click)="prevStep(form.get('officialdetails'))">Previous</button>
+            
+            <button type="button" class="btn btn-primary ml-2 btn-lg" (click)="nextStepemployee(form.get('officialdetails'))">Next</button>
           </div>
           </div>
           <div *ngIf="currentStep === 4" formGroupName="statutorydetails">
@@ -195,7 +124,7 @@
             <div class="form-group">
               <div class="row pt-5">
                 <div class="col-md-4">
-                  <label>Department</label>
+                  <label>PAN Number</label>
                   <input type="text" class="form-control" formControlName="panNumber">
                 </div>
                 <div class="col-md-4">
@@ -213,11 +142,42 @@
               </div>
             </div>
             <div class="text-right">
-              <button type="button" class="btn btn-primary" (click)="prevStep()">Previous</button>
-              <!-- <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button> -->
+              <button type="button" class="btn btn-primary btn-lg" (click)="prevStep(form.get('officialdetails'))">Previous</button>
+              <button type="button" class="btn btn-primary ml-2 btn-lg" (click)="nextStepemployee(form.get('officialdetails'))">Next</button>
             </div>
 
           </div>
+          <div *ngIf="currentStep === 5" formGroupName="bankdetails">
+            <h2>Step 5: Bank Details</h2>
+            <div class="form-group">
+              <div class="row pt-5">
+                <div class="col-md-4">
+                  <label>Account Number</label>
+                  <input type="text" class="form-control" formControlName="accountNumber">
+                </div>
+                <div class="col-md-4">
+                  <label>Bank Name</label>
+                  <input type="text" class="form-control" formControlName="bankName">
+                </div>
+                <div class="col-md-4">
+                  <label>Branch</label>
+                  <input type="text" class="form-control" formControlName="branch">
+                </div>
+                <div class="col-md-4 pt-3">
+                  <label>ifsc code</label>
+                  <input type="text" class="form-control" formControlName="ifsccode">
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <button type="button" class="btn btn-primary btn-lg" (click)="prevStep(form.get('statutorydetails'))">Previous</button>
+              <button type="submit" class="btn btn-primary btn-lg ml-2">Submit</button>
+            </div>
+
+          </div>
+          </form></div>
+          </div>
+</div>
           <!-- Fields and validation similar to previous steps -->
           
          
