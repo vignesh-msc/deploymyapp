@@ -143,7 +143,6 @@ export class EmployeeComponent {
 
   }
   openModal(data: string, emp: any) {
-    debugger;
     if (data === 'add') {
       this.isaddemp = true;
       this.iseditemp = false;

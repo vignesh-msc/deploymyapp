@@ -72,7 +72,7 @@ export class DocuploadComponent {
 
   }
   submitDetails(): void {
-    debugger;
+
     if (this.form.invalid) {
       // Display toast message for each validation error
       if (this.f.type.invalid) {

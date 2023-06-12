@@ -89,6 +89,9 @@ export class EmployeeprofileComponent {
   nextStep() {
     this.currentStep++;
   }
+  function(formGroup: AbstractControl) {
+   // this.currentStep++;
+  }
   nextStepemployee(formGroup: AbstractControl){
     if(formGroup.valid){
       this.currentStep++;
@@ -139,7 +142,7 @@ export class EmployeeprofileComponent {
       this.pf.addEmployeeprofile(reqbody).subscribe({
         next: (response) => {
           console.log('response',response);
-          this.toastr.error('Employee Profile created Successfully');
+          this.toastr.success('Employee Profile created Successfully');
         },
         error: (error) => {
           this.toastr.error(error.error);

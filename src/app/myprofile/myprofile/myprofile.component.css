@@ -12,6 +12,20 @@
     font-size: 24px;
     margin-bottom: 10px;
   }
+  .profile{
+    border: #010115 solid 1px;
+  }
+  .myprofile{
+    border: #010115 solid 1px;
+    font-size: 14px;
+  }
+  .bank-bg-color{
+    background-color: rgb(241, 254, 218);
+  }
+  .education-bg-color{
+    background-color: rgb( 240, 249, 251);
+  }
+  /* rgb(241, 254, 218) !important */
   
   .profile-details p {
     margin-bottom: 10px;
@@ -35,8 +49,11 @@
     background-color: #fff;
     color:black;
     overflow: auto;
-    height: 100vh;
-    font-size:15px;
+    font-size:13px;
     font-weight: normal!important;
+}
+h3{
+  font-size: 1.4em !important;
+  font-weight: 600
 }
   

@@ -86,14 +86,48 @@ export class statutorydetails{
     }
 
 }
-//
-// empId: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: 'employee'
-//   },
-// panNumber: { type: String, required: true },
-// aadhaarNumber: { type: String, required: true },
-// esiNumber: { type: String },
-// pfNumber: { type: String },
-// // Other statutory details fields...
-// },{ strictPopulate: false });
+// BankDetails Model
+export interface BankDetails {
+    accountNumber: string;
+    bankName: string;
+    branch: string;
+    ifsccode: string;
+  }
+  
+  // EducationalQualification Model
+  export interface EducationalQualification {
+    degree: string;
+    institution: string;
+    year: number;
+  }
+  
+  // OfficialDetails Model
+  export interface OfficialDetails {
+    department: string;
+    company: string;
+    employeestatus: string;
+    employeetype: string;
+    manager: string;
+    officelocation: string;
+    worklocation: string;
+    dateofJoining: Date;
+    designation: string;
+  }
+  
+  // StatutoryDetails Model
+  export interface StatutoryDetails {
+    panNumber: string;
+    aadhaarNumber: string;
+    esiNumber: string;
+    pfNumber: string;
+  }
+  
+  // Employee Model
+  export interface Employeeprofile {
+    empcode: string;
+    bankdetails: BankDetails;
+    educationalqualification: EducationalQualification;
+    officialdetails: OfficialDetails;
+    statutorydetails: StatutoryDetails;
+  }
+  

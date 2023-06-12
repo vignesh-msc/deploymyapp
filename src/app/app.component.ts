@@ -12,6 +12,7 @@ export class AppComponent {
   isAuthenticated:any = false;
   router: Router;
   activeMenuItem: string ='';
+  isProfile:boolean =false;
 
   constructor(private authService: authservice,router: Router) {
     this.router =router;
@@ -29,14 +30,18 @@ export class AppComponent {
   ngOnInit() {
     // Check if the user is already authenticated
     this.authService.getLoggedinMessage().subscribe((data)=>{
-      debugger;
       this.isAuthenticated =data
+      if(this.isAuthenticated){
+        this.isProfile= this.authService.getisProfile();
+      }
     });
+  
+    
     
    
   }
   signout(){
-    debugger;
+  
     this.authService.logout();
     this.isAuthenticated = false;
     this.router.navigate(['/login']);

@@ -1,19 +1,90 @@
 <div class="container-fluid container-list pt-5">
+  <app-loader [show]="isLoading"></app-loader>
+  <div class="container-fluid myprofile">
+    <div class="row">
+      <div class="col-md-12 myprofile p-5 bank-bg-color">
+        <div class="row">
+          <div class="col-md-6 d-flex align-items-start flex-column">
+            <h3>Bank Details</h3>
+          </div>
+          <div class="col-md-6 d-flex align-items-end flex-column edit-icon">
+          <i class="uil uil-edit" style="color:#28a4c9;font-size:20px;"></i>
+          </div>
+        </div>
     
-<div class="container">
-    <div class="profile">
-      <h2>Personal details</h2>
-      <div class="profile-details">
-        <p><strong>Name:</strong> John Doe</p>
-        <p><strong>Email:</strong> john@example.com</p>
-        <p><strong>Phone:</strong> 123-456-7890</p>
-        <!-- Add more employee details here -->
+        <div class="row pt-3 p-5">
+          <div class="col-md-6 d-flex align-items-start flex-column">
+            <p><strong>Account Number:</strong> {{empprofile?.bankdetails?.accountNumber}}</p>
+          <p><strong>Bank Name:</strong> {{empprofile?.bankdetails?.bankName}}</p>
+          </div>
+          <div class="col-md-6 d-flex align-items-end flex-column">
+          <p><strong>Branch:</strong> {{empprofile?.bankdetails?.branch}}</p>
+          <p><strong>Ifsc code:</strong> {{empprofile?.bankdetails?.ifsccode}}</p>
+          </div>
+        </div>
       </div>
-      <a href="#" class="edit-btn">Edit</a>
-    </div>
+        <div class="col-md-12 myprofile p-5 education-bg-color">
+          <div class="row">
+            <div class="col-md-6 d-flex align-items-start flex-column">
+              <h3>Educational Qualification</h3>
+            </div>
+            <div class="col-md-6 d-flex align-items-end flex-column edit-icon">
+            <i class="uil uil-edit" style="color:#28a4c9;font-size:20px;"></i>
+            </div>
+          </div>
+          <div class="row pt-3 p-5">
+            <div class="col-md-6 d-flex align-items-start flex-column">
+              <p><strong>Degree:</strong> {{empprofile?.educationalqualification?.degree}}</p>
+              <p><strong>Institution:</strong> {{empprofile?.educationalqualification?.institution}}</p>
+            </div>
+            <div class="col-md-6 d-flex align-items-end flex-column">
+                <p><strong>Year:</strong> {{empprofile?.educationalqualification?.year}}</p>
+              </div>
+          </div>
+          </div>
+          <div class="col-md-12 myprofile p-5 bank-bg-color">
+            <h3>Official Details</h3>
+          
+             <div class="row pt-3 p-5">
+              <div class="col-md-6 d-flex align-items-start flex-column">
+                <p><strong>Department:</strong> {{empprofile?.officialdetails?.department}}</p>
+                <p><strong>Company:</strong> {{empprofile?.officialdetails?.company}}</p>
+                <p><strong>Employee Status:</strong> {{empprofile?.officialdetails?.employeestatus}}</p>
+                <p><strong>Date of Joining:</strong> {{empprofile?.officialdetails?.dateofJoining}}</p>
+              </div>
+              <div class="col-md-6 d-flex align-items-end flex-column">
+                <p><strong>Employee Type:</strong> {{empprofile?.officialdetails?.employeetype}}</p>
+                <p><strong>Manager:</strong> {{empprofile?.officialdetails?.manager}}</p>
+                <p><strong>Office Location:</strong> {{empprofile?.officialdetails?.officelocation}}</p>
+                <p><strong>Work Location:</strong> {{empprofile?.officialdetails?.worklocation}}</p>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-12 myprofile p-5 education-bg-color">
+          <div class="row">
+            <div class="col-md-6 d-flex align-items-start flex-column">
+              <h3>Statutory Details</h3>
+            </div>
+            <div class="col-md-6 d-flex align-items-end flex-column edit-icon">
+            <i class="uil uil-edit" style="color:#28a4c9;font-size:20px;"></i>
+            </div>
+          </div>
+          <div class="row pt-3 p-5">
+            <div class="col-md-6 d-flex align-items-start flex-column">
+              <p><strong>Aadhar Number:</strong> {{empprofile?.statutorydetails?.aadhaarNumber}}</p>
+              <p><strong>Esi Number:</strong> {{empprofile?.statutorydetails?.esiNumber}}</p>
+              </div>
+              <div class="col-md-6 d-flex align-items-end flex-column">
+                <p><strong>Pan Number:</strong> {{empprofile?.statutorydetails?.panNumber}}</p>
+                <p><strong>Pf Number:</strong> {{empprofile?.statutorydetails?.pfNumber}}</p>
+              </div>
+              </div>
+      </div>
+      </div>
+      <!-- <a href="#" class="edit-btn">Edit</a> -->
   </div>
-
 </div>
+
 
 
 

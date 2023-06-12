@@ -36,9 +36,9 @@ export class LoginComponent {
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
-    debugger;
+  
     this.submitted = true;
-    debugger;
+
     if (this.loginForm.invalid) {
       return;
     }
@@ -49,6 +49,7 @@ export class LoginComponent {
           console.log(data);
           localStorage.setItem('token', data.token);
           localStorage.setItem('UserID', data.userID);
+          localStorage.setItem('isProfile',data.isprofile);
           // handle successful login
           this.subject.next({ UserId:data.userID });
           this.router.navigate(['/dashboard']);

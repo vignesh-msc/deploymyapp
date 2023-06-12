@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-   
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -46,7 +47,7 @@
             <li class="menu-link"><a routerLink="/posts" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'Posts' }" (click)="setActiveMenuItem('Posts')"><i class="fas fa-fw fa-wrench"></i>Posts</a></li>
             <li class="menu-link"><a routerLink="/grid" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'Grid' }" (click)="setActiveMenuItem('Grid')"><i class="fas fa-fw fa-table"></i>Grid</a></li>
             <li class="menu-link"><a routerLink="/upload" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'Upload' }" (click)="setActiveMenuItem('Upload')"><i class="fas fa-fw fa-folder"></i>Filesupload</a></li>
-            <li class="menu-link"><a routerLink="/profile" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'Profile' }" (click)="setActiveMenuItem('Profile')"><i class="fas fa-fw fa-chart-area"></i>Add Profile</a></li>
+            <li class="menu-link" *ngIf="!isProfile"><a routerLink="/profile" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'Profile' }" (click)="setActiveMenuItem('Profile')"><i class="fas fa-fw fa-chart-area"></i>Add Profile</a></li>
             <li class="menu-link"><a routerLink="/myprofile" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'myProfile' }" (click)="setActiveMenuItem('myProfile')"><i class="fas fa-fw fa-chart-area"></i>My Profile</a></li>
             
           </ul>

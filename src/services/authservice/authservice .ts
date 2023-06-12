@@ -50,6 +50,11 @@ import { register } from "src/app/Models/register";
     public getUserID(): string{
       return localStorage.getItem('UserID')!;
     }
+    public getisProfile(): boolean{
+      const isProfileValue = localStorage.getItem('isProfile');
+      return isProfileValue === 'true';
+    }
+    
 
     getLoggedinMessage(): Observable<boolean> {
       return this.subject.asObservable();

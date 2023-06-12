@@ -31,7 +31,7 @@ export class EmployeeService {
   }
 
   getEmployees(): Observable<employee[]> {
-    debugger;
+
     // const cacheBustingParam = new Date().getTime();
     // const url = `${this.apiUrl}?_=${cacheBustingParam}`;
 
@@ -40,7 +40,7 @@ export class EmployeeService {
 
   }
   async fetchData() {
-    debugger;
+
     const employeesEndpoint = 'employees'; // Custom endpoint
     return new Promise((resolve, reject) => {
       // Make an API call
@@ -61,7 +61,7 @@ export class EmployeeService {
     return this.http.get<employee>(`${this.apiUrl}/${id}`);
   }
   addEmployee1(employee: employee): any {
-    debugger;
+
     employee.empcode = Number(employee.empcode);
     const addEmployeeEndpoint = 'addemployee'; // Custom endpoint
     // const employeesEndpoint = 'employees'; // Custom endpoint

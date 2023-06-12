@@ -26,7 +26,7 @@ export class EmployeeSearchComponent {
     this.filterEmployees();
   }
   filterEmployees(): void {
-    debugger;
+
     if (!this.searchTerm) {
       this.filteredEmployees = this._employee;
     } else {
