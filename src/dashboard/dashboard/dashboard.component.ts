@@ -13,7 +13,8 @@ export class DashboardComponent {
   }
   ngOnInit() {
   this.isProfile= this.authService.getisProfile();
-  console.log('this.isProfiledsashboard',this.isProfile);
+  console.log('this.isProfile',this.isProfile);
+
 }
  
 

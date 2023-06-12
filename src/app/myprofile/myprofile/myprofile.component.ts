@@ -29,6 +29,7 @@ this.pf.getProfileDetails(this.auth.getUserID()).subscribe({
   },
   error: (error) => {
     console.log('error',error);
+    this.isLoading = false;
   },
 });
  

@@ -13,6 +13,7 @@ import { register } from "src/app/Models/register";
     constructor(private http: HttpClient) { }
     private _userRole: string ='';
     private email = localStorage.getItem('email');
+    private usersubject = new Subject<any>();
     private subject = new Subject<any>();
   
     public get userRole(): string {
@@ -52,11 +53,15 @@ import { register } from "src/app/Models/register";
     }
     public getisProfile(): boolean{
       const isProfileValue = localStorage.getItem('isProfile');
+     // this.usersubject.next(isProfileValue === 'true');
       return isProfileValue === 'true';
     }
     
 
     getLoggedinMessage(): Observable<boolean> {
       return this.subject.asObservable();
+    }
+    getprofileActiveMessage(): Observable<boolean> {
+      return this.usersubject.asObservable();
     }
   }

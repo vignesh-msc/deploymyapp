@@ -35,9 +35,8 @@ export class AppComponent {
         this.isProfile= this.authService.getisProfile();
       }
     });
+    this.isProfile = this.authService.getisProfile();
   
-    
-    
    
   }
   signout(){

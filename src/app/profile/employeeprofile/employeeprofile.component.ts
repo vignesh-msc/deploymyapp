@@ -10,6 +10,7 @@ import { authservice } from 'src/services/authservice/authservice ';
 import { employee,educationqualification,Bankdetails,officialDetails
 ,statutorydetails } from 'src/app/Models/profile';
 import { ProfilecreationService } from 'src/services/profileservice/profilecreation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employeeprofile',
@@ -32,7 +33,7 @@ export class EmployeeprofileComponent {
     private datePipe: DatePipe,
     private toastr: ToastrService,private empregservice:EmployeeregistrationService,
     private auth:authservice,private pf:ProfilecreationService
-    ) {
+    ,private router: Router) {
     
 
   }
@@ -143,6 +144,8 @@ export class EmployeeprofileComponent {
         next: (response) => {
           console.log('response',response);
           this.toastr.success('Employee Profile created Successfully');
+          localStorage.setItem('isProfile','true');
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           this.toastr.error(error.error);

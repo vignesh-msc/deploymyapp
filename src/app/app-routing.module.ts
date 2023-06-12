@@ -32,9 +32,9 @@ const routes: Routes = [
     {path:'posts',component:PostsComponent,canActivate: [AuthGuard]},
     {path:'login',component:LoginComponent,canActivate:[LoginauthGuard]},
     {path:'register',component:RegisterComponent},
-    {path:'upload',component: DocuploadComponent},
-    {path:'profile',component: EmployeeprofileComponent},
-    {path:'myprofile',component: MyprofileComponent},
+    {path:'upload',component: DocuploadComponent, canActivate: [AuthGuard]},
+    {path:'profile',component: EmployeeprofileComponent, canActivate: [AuthGuard]},
+    {path:'myprofile',component: MyprofileComponent, canActivate: [AuthGuard]},
     { path: '', canActivate: [AuthGuard], component: DashboardComponent },
     { path: '**', component: NotfoundComponent,canActivate: [AuthGuard]},
    

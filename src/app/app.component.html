@@ -48,7 +48,7 @@
             <li class="menu-link"><a routerLink="/grid" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'Grid' }" (click)="setActiveMenuItem('Grid')"><i class="fas fa-fw fa-table"></i>Grid</a></li>
             <li class="menu-link"><a routerLink="/upload" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'Upload' }" (click)="setActiveMenuItem('Upload')"><i class="fas fa-fw fa-folder"></i>Filesupload</a></li>
             <li class="menu-link" *ngIf="!isProfile"><a routerLink="/profile" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'Profile' }" (click)="setActiveMenuItem('Profile')"><i class="fas fa-fw fa-chart-area"></i>Add Profile</a></li>
-            <li class="menu-link"><a routerLink="/myprofile" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'myProfile' }" (click)="setActiveMenuItem('myProfile')"><i class="fas fa-fw fa-chart-area"></i>My Profile</a></li>
+            <li class="menu-link" *ngIf="isProfile"><a routerLink="/myprofile" routerLinkActive="active"[ngClass]="{ 'active': activeMenuItem === 'myProfile' }" (click)="setActiveMenuItem('myProfile')"><i class="fas fa-fw fa-chart-area"></i>My Profile</a></li>
             
           </ul>
         </div>
