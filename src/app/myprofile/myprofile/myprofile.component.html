@@ -8,7 +8,7 @@
             <h3>Bank Details</h3>
           </div>
           <div class="col-md-6 d-flex align-items-end flex-column edit-icon">
-          <i class="uil uil-edit" style="color:#28a4c9;font-size:20px;"></i>
+          <i class="uil uil-edit" style="color:#28a4c9;font-size:20px;" (click)="openModal(empprofile.bankdetails,'Bankdtls')"></i>
           </div>
         </div>
     
@@ -29,7 +29,7 @@
               <h3>Educational Qualification</h3>
             </div>
             <div class="col-md-6 d-flex align-items-end flex-column edit-icon">
-            <i class="uil uil-edit" style="color:#28a4c9;font-size:20px;"></i>
+            <i class="uil uil-edit" style="color:#28a4c9;font-size:20px;" (click)="openModal(empprofile.educationalqualification,'Edq')"></i>
             </div>
           </div>
           <div class="row pt-3 p-5">
@@ -66,7 +66,7 @@
               <h3>Statutory Details</h3>
             </div>
             <div class="col-md-6 d-flex align-items-end flex-column edit-icon">
-            <i class="uil uil-edit" style="color:#28a4c9;font-size:20px;"></i>
+            <i class="uil uil-edit" style="color:#28a4c9;font-size:20px;" (click)="openModal(empprofile.statutorydetails,'StatDtls')"></i>
             </div>
           </div>
           <div class="row pt-3 p-5">
@@ -80,10 +80,134 @@
               </div>
               </div>
       </div>
+     
+      </div>
+      <div class="modal overlay" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+        <div class="modal-dialog modal-lg modal-up custom-margin-top" role="document">
+          <div class="modal-content">
+            <div class="modal-header model-header-profile pt-3">
+              <h5 class="modal-title">{{title}}</h5>
+              <!-- <h5 class="modal-title" style="color:black" *ngIf="isaddemp">Add Employee</h5>
+              <h5 class="modal-title" style="color:black" *ngIf="iseditemp">Edit Employee</h5> -->
+              <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" [ngSwitch]="selctededitdetials">
+              <div *ngSwitchCase="'statutorydetails'">
+                <div class="row pt-4 pr-3 pb-5 pl-3">
+                  <div class="col-md-6 d-flex flex-column">
+                    <div class="form-group">
+                      <label for="aadhaarNumber" class="form-label">Aadhaar Number</label>
+                      <input type="text" id="aadhaarNumber"  class="form-control form-control-lg"[(ngModel)]="empprofile_edit.statutorydetails.aadhaarNumber" />
+                </div>
+                  </div>
+                  <div class="col-md-6 d-flex flex-column">
+                    <div class="form-group">
+                      <label for="esiNumber" class="form-label">ESI Number</label>
+                      <input type="text" id="esiNumber"  class="form-control form-control-lg" [(ngModel)]="empprofile_edit.statutorydetails.esiNumber"/>
+                    </div>
+                  </div>
+                  <div class="col-md-6 d-flex flex-column">
+                    <div class="form-group">
+                      <label for="panNumber" class="form-label">PAN Number</label>
+                    <input type="text" id="panNumber" class="form-control form-control-lg" [(ngModel)]="empprofile_edit.statutorydetails.panNumber" />
+                   </div>
+                  
+                  </div>
+                  <div class="col-md-6 d-flex flex-column">
+                    <div class="form-group">
+                      <label for="pfNumber" class="form-label">PF Number</label>
+                      <input type="text" id="pfNumber" class="form-control form-control-lg" [(ngModel)]="empprofile_edit.statutorydetails.pfNumber" />
+                    </div>
+                  </div>
+                
+             
+          
+              </div>
+              <div class="d-flex justify-content-between">
+                <div>
+                  <input type="button" class="btn btn-danger form-control btn-lg font-weight-bold" value="Cancel"/>
+                </div>
+                <div>
+                    <input type="button"  class="btn btn-success form-control btn-lg font-weight-bold"  value="Submit"/>
+                </div>
+          
+              </div>
+              <!-- <div *ngSwitchCase="'officialdetails'">
+                ... (input fields for official details)
+              </div> -->
+              </div>
+              <div *ngSwitchCase="'educationalqualification'">
+                <div class="row pt-4 pr-3 pb-5 pl-3">
+                  <div class="col-md-6 d-flex flex-column">
+                    <label for="degree" class="form-label">Degree</label>
+                    <input type="text" id="degree" [(ngModel)]="empprofile_edit.educationalqualification.degree" class="form-control"/>
+
+                  </div>
+               
+                <div class="col-md-6 d-flex flex-column">
+                  <label for="institution" class="form-label">Institution</label>
+                  <input type="text" id="institution" [(ngModel)]="empprofile_edit.educationalqualification.institution" class="form-control" />
+                </div>
+                <div class="col-md-6 d-flex flex-column">
+                  <label for="year" class="form-label">Year</label>
+                  <input type="text" id="year" [(ngModel)]="empprofile_edit.educationalqualification.year" class="form-control"/>
+                </div>
+              </div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <input type="button" class="btn btn-danger form-control btn-lg font-weight-bold" value="Cancel"/>
+                  </div>
+                  <div>
+                      <input type="button"  class="btn btn-success form-control btn-lg font-weight-bold"  value="Submit"/>
+                  </div>
+                </div>
+              </div>
+              
+              <div *ngSwitchCase="'bankdetails'">
+                    <div class="row pt-4 pr-3 pb-5 pl-3">
+                      <div class ="col-md-6 d-flex flex-column">
+                        <label for="accountNumber" class="form-label">Account Number</label>
+                        <input type="text" id="accountNumber" [(ngModel)]="empprofile_edit.bankdetails.accountNumber" class="form-control"/>
+                      </div>
+                      <div class ="col-md-6 d-flex flex-column">
+                        <label for="bankName"class="form-label">Bank Name</label>
+                        <input type="text" id="bankName" [(ngModel)]="empprofile_edit.bankdetails.bankName" class="form-control"/>
+                      </div>
+                      <div class ="col-md-6 d-flex flex-column">
+                        <label for="ifsccode" class="form-label">IFSC Code</label>
+                        <input type="text" id="ifsccode" [(ngModel)]="empprofile_edit.bankdetails.ifsccode" class="form-control" />
+                      </div>
+                      <div class ="col-md-6 d-flex flex-column">
+                        <label for="branch" class="form-label">Branch:</label>
+                        <input type="text" id="branch" [(ngModel)]="empprofile_edit.bankdetails.branch"  class="form-control" />
+                      </div>
+                  
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <input type="button" class="btn btn-danger form-control btn-lg font-weight-bold" value="Cancel"/>
+                      </div>
+                      <div>
+                          <input type="button"  class="btn btn-success form-control btn-lg font-weight-bold"  value="Submit"/>
+                      </div>
+                    </div>             
+              </div>             
+            </div>      
+      </div>
+      </div>
+      
       </div>
       <!-- <a href="#" class="edit-btn">Edit</a> -->
   </div>
+ 
 </div>
+<!-- Button trigger modal -->
+
+<!-- Button trigger modal -->
+
+
 
 
 
