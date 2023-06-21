@@ -9,6 +9,15 @@
     font-size:15px;
     font-weight: normal!important;
 }
+.comment-section .comment-form{
+    color:black;
+}
+.comment-form{
+    color:black;
+}
+.comment-content{
+    color:black;
+}
 .container-list label{
     font-weight: normal!important;
 }
@@ -135,5 +144,28 @@ li{
     transform: translateY(-5px);
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   } */
+
+  .product-image  img {
+    width: 100%;
+    height: auto;
+  }
+  .custom-thumbnail {
+    height: 100px; /* Adjust the height as per your requirements */
+    width: 100px; 
+  }
+  .thumbnail {
+    overflow: hidden; /* Ensure the image doesn't overflow the thumbnail container */
+  }
+  
+  .img-hover-effect {
+    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+  }
+  
+  .img-hover-effect:hover {
+    transform: scale(1.1); /* Increase the scale to 1.1 (or adjust as desired) on hover */
+  }
+  .vertical-gap {
+    margin-bottom: 70px; /* Adjust the value to increase or decrease the gap */
+  }
 
   

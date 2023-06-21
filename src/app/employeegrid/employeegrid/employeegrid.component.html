@@ -1,73 +1,74 @@
-<div class="container-fluid container-list">
-  <div class="border-bottom text-dark customer">
-  <p class="text-dark font-weight-bold pt-4">Create Customer</p>  
+
+
+<!-- Comment Form -->
+<div class="comment-form" *ngIf="0">
+  <textarea [(ngModel)]="newCommentContent" placeholder="Write a comment"></textarea>
+  <button (click)="addComment()">Submit</button>
+</div>
+<div>
+  <div class="container vertical-gap" style="color:black">
+    <div style="border: aqua solid 1px">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let stock of stocks" >
+          <div class="thumbnail custom-thumbnail">
+           {{stock.name}}
+          </div>
+          {{stock.quantity}}
+          <i class="bi bi-currency-dollar">{{stock.price}}</i> 
+        <input type="button" value="buy" (click)="addProduct(stock)"/>
+        </div>
+      </div> 
   </div>
-  <span class="border-bottom-5"></span>
-  <p class="text-dark font-weight-bold small pt-4 pl-3 customer1">Add Customer Details</p> 
-  <div class="container pt-4">
+</div>
+<div class="container" style="border: rgb(236, 14, 14) solid 1px">
+
+    <div *ngIf="selproducts.length>0">
+      <input  type="button" class="btn btn-primary btn-lg" value="Buy" (click)="createOrder()"/>
+      <div style="border: aqua solid 1px">
+        <p>Total Cost: {{ totalCost }}</p>
     <div class="row">
-      <div class="col-md-4">
-        <label class="form-label fs-6 fw-normal">Customer Name</label>
-        <input type="text" class="form-control form-control-lg mt-2" placeholder="customer name">
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-6 fw-normal">Username</label>
-        <input type="text" class="form-control form-control-lg mt-2">
-      </div>
-      <div class="col-md-4"></div>
-    </div>
-    <div class="row pt-5">
-      <div class="col-md-4">
-        <label class="form-label fs-6 fw-normal">User Type</label>
-        <input type="text" class="form-control form-control-lg mt-2">
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-6 fw-normal">Mapped Group</label>
-        <input type="text" class="form-control form-control-lg mt-2">
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-6 fw-normal">User Role</label>
-        <input type="text" class="form-control form-control-lg mt-2">
-      </div>
-
-    </div>
-    <div class="row pt-5">
-      <div class="col-md-4">
-        <label class="form-label fs-6">First Name</label>
-        <input type="text" class="form-control form-control-lg mt-2" placeholder="first name">
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-6 ">Middle Name</label>
-        <input type="text" class="form-control form-control-lg mt-2" placeholder="middle name">
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-6 fw-normal">Last Name</label>
-        <input type="text" class="form-control form-control-lg mt-2" placeholder="last name">
-      </div>
-
-    </div>
-    <div class="row pt-5">
-      <div class="col-md-4">
-        <label class="form-label fs-6 fw-normal">Email</label>
-        <input type="text" class="form-control form-control-lg mt-2" placeholder="Email">
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-6 fw-normal">Mobile Number</label>
-        <input type="text" class="form-control form-control-lg mt-2" placeholder="mobile number">
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-6 fw-normal">Password</label>
-        <input type="text" class="form-control form-control-lg mt-2" placeholder="password">
-      </div>
-    </div>
-    <div class="row pt-5">
-      <div class="col-md-6 mt-3">
-        <input type="submit" class="btn btn-warning btn-lg submit-me" value="SUBMIT">
-      </div>
-      <div class="col-md-6"></div>
+      <div class="col-md-2" *ngFor="let stock of selproducts">
+        <div class="quantity-control">
+          <div class="col-sm-1">
+            <button (click)="decreaseQuantity(stock)">-</button>
+          </div>
+          <div class="col-sm-1">
+            <input type="number" [(ngModel)]="stock.quantity" min="1" style="color:black;width:50px"/>
+          </div>
+          <div class="col-sm-1">
+            <button (click)="increaseQuantity(stock)">+</button>
+          </div>
+        </div>
+        {{stock.name}}
+        <div class="thumbnail custom-thumbnail">
+        </div>
+        <div>
+          <input type="button" class="btn-warning" value="remove" (click)="removeItem(stock)"/>
+        </div>
     </div>
   </div>
 </div>
+</div>
+
+<div>
+  <div *ngIf="orderedItems.length>0">
+    <input type="button" class="btn-primary" value ="Your Orders" (click)="showorders()"/>
+  </div>
+  <div *ngIf="showorder && orderedItems.length>0">
+    <input type="button" class="btn-primary" value ="Close" (click)="closeorders()"/>
+    <h3 style="color: black;">Your cart orders</h3>
+    <div *ngFor="let order of orderedItems" style="color: black;">
+      {{order.name}}
+      {{order.price}}
+      {{order.quantity}}
+      <input type="button" class="btn-primary" value ="Cancel Order" (click)="removeOrders(order)"/>
+    </div>
+  </div>
+ 
+
+</div>
+</div>
+
 
    
     
