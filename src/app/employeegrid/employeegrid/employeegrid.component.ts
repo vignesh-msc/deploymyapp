@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { filter, map, of } from 'rxjs';
 import { Author ,Comment,Reply,SubComment} from 'src/app/Models/comments';
 import { User } from 'src/app/Models/employee';
 import { Product ,Items,cartItem,stockItem} from 'src/app/Models/product';
 import { authservice } from 'src/services/authservice/authservice ';
 import { CartserviceService } from 'src/services/cartservice/cartservice.service';
-import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -39,7 +37,8 @@ export class EmployeegridComponent {
   selproducts :stockItem[] =[];
   totalCost:number=0;
   orderedItems:stockItem[] =[];
-  stocks:stockItem[]=[]
+  stocks:stockItem[]=[];
+  display: string = "none";
 
   ngOnInit() {
 
@@ -70,6 +69,7 @@ export class EmployeegridComponent {
       next: (response: any) => {
         this.stocks = response;
         console.log('this.stocks',this.stocks)
+        
       },
       error:(error: any)=>{
       }});
@@ -78,6 +78,12 @@ export class EmployeegridComponent {
 
     this.isDisabled = true;
    // this.users.push('another user added')
+  }
+  openModel(){
+    this.display = "block";
+  }
+  onCloseHandled(){
+    this.display = "none";
   }
   enable(){
     this.isDisabled = false;

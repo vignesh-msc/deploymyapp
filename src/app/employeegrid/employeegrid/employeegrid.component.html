@@ -1,72 +1,77 @@
-
-
-<!-- Comment Form -->
-<div class="comment-form" *ngIf="0">
-  <textarea [(ngModel)]="newCommentContent" placeholder="Write a comment"></textarea>
-  <button (click)="addComment()">Submit</button>
-</div>
-<div>
-  <div class="container vertical-gap" style="color:black">
-    <div style="border: aqua solid 1px">
-      <div class="row">
-        <div class="col-md-4" *ngFor="let stock of stocks" >
-          <div class="thumbnail custom-thumbnail">
-           {{stock.name}}
-          </div>
-          {{stock.quantity}}
-          <i class="bi bi-currency-dollar">{{stock.price}}</i> 
-        <input type="button" value="buy" (click)="addProduct(stock)"/>
-        </div>
-      </div> 
-  </div>
-</div>
-<div class="container" style="border: rgb(236, 14, 14) solid 1px">
-
-    <div *ngIf="selproducts.length>0">
-      <input  type="button" class="btn btn-primary btn-lg" value="Buy" (click)="createOrder()"/>
-      <div style="border: aqua solid 1px">
-        <p>Total Cost: {{ totalCost }}</p>
-    <div class="row">
-      <div class="col-md-2" *ngFor="let stock of selproducts">
-        <div class="quantity-control">
-          <div class="col-sm-1">
-            <button (click)="decreaseQuantity(stock)">-</button>
-          </div>
-          <div class="col-sm-1">
-            <input type="number" [(ngModel)]="stock.quantity" min="1" style="color:black;width:50px"/>
-          </div>
-          <div class="col-sm-1">
-            <button (click)="increaseQuantity(stock)">+</button>
-          </div>
-        </div>
-        {{stock.name}}
-        <div class="thumbnail custom-thumbnail">
-        </div>
-        <div>
-          <input type="button" class="btn-warning" value="remove" (click)="removeItem(stock)"/>
-        </div>
+<!-- <div class="d-flex justify-content-end">
+  <button class="btn btn-primary" value="View selected items" (click)="openModel()" [disabled]="selproducts.length===0">
+    <i class="bi bi-cart"></i>
+  </button>
+</div> -->
+<span class="position-relative d-flex justify-content-end" style="bottom: 30px;">
+  <button class="btn btn-primary" value="View selected items" (click)="openModel()" [disabled]="selproducts.length===0" >
+      <i class="fa fa-shopping-cart"></i>   
+  </button>
+  <span class="badge bg-warning" id="shoppingbadge">
+    {{selproducts.length}}
+  </span>
+</span>
+<div class="item-list container-fluid card-group">
+  <div class="card m-2" *ngFor="let stock of stocks">
+          <img src="https://thumbs.dreamstime.com/b/shopping-online-ecommerce-website-concept-shopping-online-ecommerce-website-concept-woman-use-laptop-to-195692512.jpg" class="card-img-top" alt="Item Image" class="img-hover-effect">
+    <div class="card-body text-dark">
+      <h5 class="card-title h6">{{ stock.name }}</h5>
+      <p class="card-text">Quantity: {{ stock.quantity }}</p>
+      <p class="card-text">Price: {{ stock.price }}</p>
+      <button class="btn btn-primary" (click)="addProduct(stock)">Add to Cart</button>
     </div>
-  </div>
-</div>
-</div>
-
-<div>
-  <div *ngIf="orderedItems.length>0">
-    <input type="button" class="btn-primary" value ="Your Orders" (click)="showorders()"/>
-  </div>
-  <div *ngIf="showorder && orderedItems.length>0">
-    <input type="button" class="btn-primary" value ="Close" (click)="closeorders()"/>
-    <h3 style="color: black;">Your cart orders</h3>
-    <div *ngFor="let order of orderedItems" style="color: black;">
-      {{order.name}}
-      {{order.price}}
-      {{order.quantity}}
-      <input type="button" class="btn-primary" value ="Cancel Order" (click)="removeOrders(order)"/>
+    <div>
+      
     </div>
+  
   </div>
- 
-
 </div>
+
+
+<div class="modal modal-fullscreen modal-textcolor" tabindex="-1" role="dialog" [ngStyle]="{'display': display}" >
+  <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document"role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="selproducts.length>0">
+          <input  type="button" class="btn btn-primary btn-lg" value="Buy" (click)="createOrder()"/>
+          <div style="border: aqua solid 1px">
+            <p>Total Cost: {{ totalCost }}</p>
+        <div class="row">
+          <div class="col-md-2" *ngFor="let stock of selproducts">
+            <div class="quantity-control">
+              <div class="col-sm-1">
+                <button (click)="decreaseQuantity(stock)">-</button>
+              </div>
+              <div class="col-sm-1">
+                <input type="number" [(ngModel)]="stock.quantity" min="1" style="color:black;width:50px"/>
+              </div>
+              <div class="col-sm-1">
+                <button (click)="increaseQuantity(stock)">+</button>
+              </div>
+            </div>
+            {{stock.name}}
+            <div class="thumbnail custom-thumbnail">
+            </div>
+            <div>
+              <input type="button" class="btn-warning" value="remove" (click)="removeItem(stock)"/>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div *ngIf="selproducts.length===0">
+      <p>Your Cart is Empty</p>
+
+    </div>
+      </div>      
+</div>
+</div>
+
 </div>
 
 

@@ -158,14 +158,24 @@ li{
   }
   
   .img-hover-effect {
-    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+    transition: transform 0.6s ease-in-out; /* Add a smooth transition effect */
   }
   
   .img-hover-effect:hover {
-    transform: scale(1.1); /* Increase the scale to 1.1 (or adjust as desired) on hover */
+    transform: scale(1.02); /* Increase the scale to 1.1 (or adjust as desired) on hover */
   }
   .vertical-gap {
     margin-bottom: 70px; /* Adjust the value to increase or decrease the gap */
+  }
+  .modal-textcolor{
+    color: black;
+  }
+  #shoppingbadge{
+    position: absolute;
+    /* top: -6px; */
+    bottom: 22px;
+    font-size: 10px;
+    right: -4px;
   }
 
   
